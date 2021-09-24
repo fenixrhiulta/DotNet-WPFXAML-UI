@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31402.337
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RhiultaUI", "RhiultaUI\RhiultaUI.csproj", "{EC5860FD-4826-4F15-B5E0-CDCAD442BC4E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC5860FD-4826-4F15-B5E0-CDCAD442BC4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC5860FD-4826-4F15-B5E0-CDCAD442BC4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC5860FD-4826-4F15-B5E0-CDCAD442BC4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC5860FD-4826-4F15-B5E0-CDCAD442BC4E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E7EA6AC-30C2-4F05-9D57-736A032C016C}
+	EndGlobalSection
+EndGlobal
