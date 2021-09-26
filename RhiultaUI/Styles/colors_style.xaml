@@ -1,0 +1,47 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="controlBackgroundColor">#EEE</Color>
+    <Color x:Key="controlForegroundColor">#222</Color>
+
+    <Color x:Key="primaryColor">#00796B</Color>
+    <Color x:Key="primaryDarkColor">#004D40</Color>
+
+    <Color x:Key="primaryInvertColor">#EEE</Color>
+
+    <Color x:Key="highlightColor">#FDD835</Color>
+    <Color x:Key="highlightInvertColor">#FFFDE7</Color>
+
+    <Color x:Key="redColor">#D32F2F</Color>
+
+    <SolidColorBrush x:Key="primaryColorSB" Color="{DynamicResource primaryColor}" />
+    <SolidColorBrush x:Key="primaryColorSB_80" Opacity="0.8" Color="{DynamicResource primaryColor}" />
+    <SolidColorBrush x:Key="primaryDarkColorSB" Color="{DynamicResource primaryDarkColor}" />
+    <SolidColorBrush x:Key="primaryInvertColorSB" Color="{DynamicResource primaryInvertColor}" />
+    <SolidColorBrush x:Key="controlBackgroundColorSB" Color="{DynamicResource controlBackgroundColor}" />
+    <SolidColorBrush x:Key="controlForegroundColorSB" Color="{DynamicResource controlForegroundColor}" />
+    <SolidColorBrush x:Key="highlightColorSB" Color="{DynamicResource highlightColor}" />
+
+    <SolidColorBrush x:Key="redColorSB" Color="{DynamicResource redColor}" />
+
+
+    <!--<Color x:Key="firstColor" R="20" G="20" B="20" A="255" />
+    <Color x:Key="firstColorDark" R="10" G="10" B="10" A="255" />
+    <Color x:Key="IdealForegroundColor" R="227" G="231" B="255" A="255" />
+    <Color x:Key="firstColorHighlight" R="247" G="196" B="54" A="255" />
+    <Color x:Key="ControlBackgroundColor" R="227" G="231" B="255" A="255" />
+    <Color x:Key="ControlBackgroundDarkColor" R="227" G="231" B="255" A="255" />
+    <Color x:Key="FocusedBackgroundColor" R="227" G="231" B="255" A="255" />
+    <Color x:Key="darkColor_80" R="0" G="0" B="0" A="200" />-->
+
+    <!--<SolidColorBrush x:Key="darkColorSB_80" Color="{StaticResource darkColor_80}"/>
+    <SolidColorBrush x:Key="firstColorSB" Color="{DynamicResource firstColor}" />
+    <SolidColorBrush x:Key="firstColorDarkSB" Color="{DynamicResource firstColorDark}" />
+    <SolidColorBrush x:Key="firstColorHighlightSB" Color="{DynamicResource firstColorHighlight}" />
+    <SolidColorBrush x:Key="firstColorBackgroundSB" Color="{DynamicResource IdealForegroundColor}" />
+    <SolidColorBrush x:Key="IdealForegroundColorSB" Color="{DynamicResource IdealForegroundColor}" />
+    <SolidColorBrush x:Key="ControlBackgroundColorSB" Color="#EEE" />-->
+
+
+
+</ResourceDictionary>

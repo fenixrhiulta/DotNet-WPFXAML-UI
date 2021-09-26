@@ -1,0 +1,190 @@
+﻿<UserControl x:Class="RhiultaUI.Drawer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:local="clr-namespace:RhiultaUI"
+             x:Name="uc"
+             Foreground="{DynamicResource IdealForegroundColorSB}"
+             mc:Ignorable="d" >
+    <UserControl.Resources>
+        <Storyboard x:Key="DrawerIn">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="border" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="400">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut" Exponent="5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="DrawerOut">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="border" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut" Exponent="5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="BtnAnimation1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="border1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                <EasingDoubleKeyFrame KeyTime="00:00:0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.7" Value="180">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut" Exponent="9"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="BtnAnimation2">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="packIconMaterialDesign" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="270"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="250">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.7000000" Value="280">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.2000000" Value="270">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut" Exponent="3"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <Grid>
+        <Behaviors:Interaction.Triggers>
+            <Behaviors:DataTrigger Binding="{Binding DrawerOpen}" Value="True">
+                <Behaviors:ControlStoryboardAction Storyboard="{DynamicResource DrawerIn}" ControlStoryboardOption="Play"/>
+            </Behaviors:DataTrigger>
+            <Behaviors:DataTrigger Binding="{Binding DrawerOpen}" Value="False">
+                <Behaviors:ControlStoryboardAction Storyboard="{DynamicResource DrawerOut}" ControlStoryboardOption="Play"/>
+            </Behaviors:DataTrigger>
+        </Behaviors:Interaction.Triggers>
+        <Canvas>
+            <Border Padding="20,5" Background="{DynamicResource firstColorSB}" >
+                <Behaviors:Interaction.Triggers>
+                    <Behaviors:EventTrigger EventName="MouseLeftButtonDown" >
+                        <Behaviors:InvokeCommandAction Command="{Binding Open}"/>
+                    </Behaviors:EventTrigger>
+                    <Behaviors:EventTrigger EventName="MouseEnter" >
+                        <Behaviors:ControlStoryboardAction Storyboard="{DynamicResource BtnAnimation1}" ControlStoryboardOption="Play"/>
+                    </Behaviors:EventTrigger>
+                </Behaviors:Interaction.Triggers>
+                <StackPanel VerticalAlignment="Top" Orientation="Horizontal" >
+                    <Border x:Name="border1"  HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                        <icons:PackIconMaterialDesign Width="25" Height="25" Kind="Reorder" />
+                    </Border>
+                    <TextBlock Text="MENU" Margin="10,0,0,0" HorizontalAlignment="Center" FontSize="15" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </Canvas>
+        <Border x:Name="border" Width="0"  Background="{DynamicResource firstColorDarkSB}" >
+            
+            <Grid TextBlock.FontSize="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Border Background="{DynamicResource firstColorDarkSB}" Panel.ZIndex="99" HorizontalAlignment="Right" VerticalAlignment="Top"  Height="Auto">
+                        <Behaviors:Interaction.Triggers>
+                            <Behaviors:EventTrigger EventName="MouseLeftButtonDown" >
+                                <Behaviors:InvokeCommandAction Command="{Binding Close}"/>
+                            </Behaviors:EventTrigger>
+                            <Behaviors:EventTrigger EventName="MouseEnter" >
+                                <Behaviors:ControlStoryboardAction Storyboard="{DynamicResource BtnAnimation2}" ControlStoryboardOption="Play"/>
+                            </Behaviors:EventTrigger>
+                        </Behaviors:Interaction.Triggers>
+                        <icons:PackIconMaterialDesign x:Name="packIconMaterialDesign" Kind="ExpandLess" Margin="20" Width="30" RenderTransformOrigin="0.5,0.5" >
+                            <icons:PackIconMaterialDesign.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="270"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </icons:PackIconMaterialDesign.RenderTransform>
+
+                        </icons:PackIconMaterialDesign>
+                    </Border>
+                    <ContentControl Content="{Binding ContentHeader}"/>
+                </Grid>
+                <ScrollViewer Grid.Row="1">
+                    <ContentControl Content="{Binding ContentList}"/>
+                </ScrollViewer>
+
+                <!--<Border Margin="10">
+                    <TextBlock Text="Operacional" FontSize="18"/>
+                </Border>-->
+                <!--<DockPanel Margin="10">
+                    <icons:PackIconMaterial Kind="Cart" VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto" Height="30" Margin="20,0"/>
+                    <TextBlock Text="Compra de Mercadoria" FontSize="20" Margin="10"/>
+                </DockPanel>
+                <DockPanel Margin="10">
+                    <icons:PackIconMaterial Kind="BottleTonicPlus" VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto" Height="30" Margin="20,0"/>
+                    <TextBlock Text="Entrada de Mercadoria" FontSize="20" Margin="10"/>
+                </DockPanel>
+                <DockPanel Margin="10">
+                    <icons:PackIconMaterial Kind="CalendarCheckOutline" VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto" Height="30" Margin="20,0"/>
+                    <TextBlock Text="Controle de Estoque" FontSize="20" Margin="10"/>
+                </DockPanel>
+                <DockPanel Margin="10">
+                    <icons:PackIconMaterialLight Kind="ArrowUp" VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto" Height="30" Margin="20,0"/>
+                    <TextBlock Text="Reposição" FontSize="20" Margin="10"/>
+                </DockPanel>
+                <DockPanel Margin="10">
+                    <icons:PackIconMaterial Kind="MagnifyScan" VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto" Height="30" Margin="20,0"/>
+                    <TextBlock Text="Supervisor" FontSize="20" Margin="10"/>
+                </DockPanel>
+                <DockPanel Margin="10">
+                    <icons:PackIconMaterial Kind="CashRegister" VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto" Height="30" Margin="20,0"/>
+                    <TextBlock Text="Caixa" FontSize="20" Margin="10"/>
+                </DockPanel>
+                <Border Margin="10">
+                    <TextBlock Text="Administrativo" FontSize="18"/>
+                </Border>
+                <DockPanel Margin="10">
+                    <icons:PackIconMaterial Kind="CashUsdOutline" VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto" Height="30" Margin="20,0"/>
+                    <TextBlock Text="Financeiro" FontSize="20" Margin="10"/>
+                </DockPanel>
+                <DockPanel Margin="10">
+                    <icons:PackIconMaterial Kind="AccountTie" VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto" Height="30" Margin="20,0"/>
+                    <TextBlock Text="Gestão" FontSize="20" Margin="10"/>
+                </DockPanel>
+                <Border Margin="10">
+                    <TextBlock Text="Sistema" FontSize="18"/>
+                </Border>
+                <DockPanel Margin="10">
+                    <icons:PackIconMaterial Kind="HelpCircleOutline" VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto" Height="30" Margin="20,0"/>
+                    <TextBlock Text="Suporte" FontSize="20" Margin="10"/>
+                </DockPanel>
+                <DockPanel Margin="10">
+                    <icons:PackIconMaterial Kind="InformationOutline" VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto" Height="30" Margin="20,0"/>
+                    <TextBlock Text="Sobre" FontSize="20" Margin="10"/>
+                </DockPanel>-->
+                <!--<DockPanel Margin="10">
+                    <icons:PackIconMaterial Kind="Account" VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto" Height="30" Margin="20,0"/>
+                    <TextBlock Text="Usuários" FontSize="20" Margin="10"/>
+                </DockPanel>-->
+                <!--<TextBlock Text="Contas à Pagar" FontSize="25" Margin="10"/>
+                <TextBlock Text="Cadastro de Usuários" FontSize="25" Margin="10"/>-->
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

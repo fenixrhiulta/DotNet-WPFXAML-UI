@@ -4,6 +4,37 @@
              xmlns:local="clr-namespace:RhiultaUI"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/colors_style.xaml" />
+                <ResourceDictionary Source="/Styles/fonts_style.xaml" />
+                <!--Components-->
+                <ResourceDictionary Source="/Styles/tooltip_style.xaml" />
+                <ResourceDictionary Source="/Styles/window_style.xaml" />
+
+                <ResourceDictionary Source="/Styles/button_style.xaml" />
+                <ResourceDictionary Source="/Styles/datagrid_style.xaml" />
+                <ResourceDictionary Source="/Styles/textbox_style.xaml" />
+                <ResourceDictionary Source="/Styles/tabcontrol2_style.xaml" />
+                <ResourceDictionary Source="/Styles/checkbox_style.xaml" />
+                <ResourceDictionary Source="/Styles/datepicker_style.xaml" />
+
+                <!--<ResourceDictionary Source="pack://application:,,,/RhiultaUI;component/Styles/colors_style.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/RhiultaUI;component/Styles/fonts_style.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/RhiultaUI;component/Styles/window_style.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/RhiultaUI;component/Styles/image_style.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/RhiultaUI;component/Styles/scrollbar_style.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/RhiultaUI;component/Styles/button_style.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/RhiultaUI;component/Styles/datagrid_style.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/RhiultaUI;component/Styles/textbox_style.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/RhiultaUI;component/Styles/groupbox_style.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/RhiultaUI;component/Styles/separator_style.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/RhiultaUI;component/Styles/tabcontrol2_style.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/RhiultaUI;component/Styles/passwordbox_style.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/RhiultaUI;component/Styles/checkbox_style.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/RhiultaUI;component/Styles/datepicker_style.xaml" />-->
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
+
 </Application>

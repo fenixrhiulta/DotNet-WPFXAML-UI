@@ -1,0 +1,106 @@
+﻿<UserControl x:Name="userControl" x:Class="RhiultaUI.Tile"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RhiultaUI"
+             xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d" 
+            Foreground="{DynamicResource IdealForegroundColorSB}"
+             FontSize="20" Height="200" Width="200"
+             d:DesignHeight="150" RenderTransformOrigin="0.5,0.5">
+    <UserControl.Resources>
+        <Storyboard x:Key="AnimationIn">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="userControl" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="-500"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="-10">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseInOut" Power="2"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="userControl" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseEnter">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="userControl" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-2">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.7000000" Value="2">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="bg" Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.5"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="bg" Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Color)">
+                <EasingColorKeyFrame KeyTime="00:00:00.3000000" Value="{StaticResource firstColorHighlight}"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeave">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="bg" Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.3"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="bg" Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Color)">
+                <EasingColorKeyFrame KeyTime="00:00:00.3000000" Value="{StaticResource firstColorDark}"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform/>
+            <SkewTransform/>
+            <RotateTransform/>
+            <TranslateTransform/>
+        </TransformGroup>
+    </UserControl.RenderTransform>
+    <Behaviors:Interaction.Triggers>
+        <Behaviors:EventTrigger EventName="MouseEnter">
+            <Behaviors:ControlStoryboardAction Storyboard="{DynamicResource MouseEnter}" ControlStoryboardOption="Play"/>
+        </Behaviors:EventTrigger>
+        <Behaviors:EventTrigger EventName="MouseLeave">
+            <Behaviors:ControlStoryboardAction Storyboard="{DynamicResource MouseLeave}" ControlStoryboardOption="Play"/>
+        </Behaviors:EventTrigger>
+    </Behaviors:Interaction.Triggers>
+    <Grid >
+        <Border Margin="5" x:Name="bg" CornerRadius="5" Grid.RowSpan="2"  Background="{DynamicResource firstColorDarkSB}">
+            <Border.Effect>
+                <DropShadowEffect Color="{DynamicResource firstColorDark}" Opacity="0.3" ShadowDepth="1" BlurRadius="30" Direction="315"/>
+            </Border.Effect>
+        </Border>
+        <Grid Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Viewbox Margin="5">
+                <icons:PackIconFontAwesome Kind="{Binding IconFontAwesome}" HorizontalAlignment="Center"/>
+            </Viewbox>
+            <TextBlock RenderOptions.BitmapScalingMode="HighQuality" Text="{Binding Header}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1"/>
+        </Grid>
+    </Grid>
+</UserControl>

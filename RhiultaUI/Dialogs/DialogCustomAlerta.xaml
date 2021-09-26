@@ -1,0 +1,68 @@
+﻿<Window x:Class="RhiultaUI.DialogCustomAlerta"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        Style="{DynamicResource WindowPadraoTeste}"
+        Background="Transparent"
+        mc:Ignorable="d" AllowsTransparency="True" x:Name="window"  Foreground="White" >
+    <Window.Resources>
+        <Storyboard x:Key="IconLoaded">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="PackIconFontAwesome">
+                <SplineDoubleKeyFrame KeyTime="0" Value="-172.5"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.4" Value="-4.5" KeySpline="0,0,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="borderAlert">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderThickness)" Storyboard.TargetName="BorderAlert">
+                <SplineThicknessKeyFrame KeyTime="0" Value="0"/>
+                <SplineThicknessKeyFrame KeyTime="0:0:0.1" Value="2"/>
+                <SplineThicknessKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                <SplineThicknessKeyFrame KeyTime="0:0:0.3" Value="2"/>
+                <SplineThicknessKeyFrame KeyTime="0:0:0.5" Value="0" KeySpline="0,0,0,1"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <!--<Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{DynamicResource IconLoaded}"/>
+        </EventTrigger>
+    </Window.Triggers>-->
+    <Grid >
+        <Border x:Name="BorderBackground" Opacity="0.7">
+            <Border.Background>
+                <SolidColorBrush Color="#DD000000"  />
+            </Border.Background>
+            <Border.Triggers>
+                <EventTrigger RoutedEvent="Mouse.PreviewMouseDown">
+                    <BeginStoryboard Storyboard="{DynamicResource borderAlert}"/>
+                </EventTrigger>
+            </Border.Triggers>
+        </Border>
+        <Grid Height="Auto" Background="{DynamicResource firstColor}" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="109*" />
+                <RowDefinition Height="91*" />
+            </Grid.RowDefinitions>
+            <Border x:Name="BorderAlert" BorderThickness="0" BorderBrush="{DynamicResource firstColorDark}" Grid.RowSpan="3"/>
+            <DockPanel HorizontalAlignment="Center" Margin="10" >
+                <!--<icons:PackIconModern Foreground="Yellow" DockPanel.Dock="Left" x:Name="PackIconFontAwesome" Height="50" Width="Auto" Margin="-5, 10,10,10" Kind="Warning" RenderTransformOrigin="0.5,0.5" >
+                    <icons:PackIconModern.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </icons:PackIconModern.RenderTransform>
+                </icons:PackIconModern>-->
+                <DockPanel  DockPanel.Dock="Left" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <TextBlock DockPanel.Dock="Top" x:Name="info" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0" Text="xxxxxxxxxxxxxxxxxxxxxx" FontSize="30"  TextWrapping="Wrap"/>
+                    <TextBlock  DockPanel.Dock="Top" x:Name="infosub"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0" Text="xxxxxxxxxxxxxxxxxxxxxx" FontSize="25"  TextWrapping="Wrap" FontStyle="Italic"/>
+                </DockPanel>
+            </DockPanel>
+            <Button x:Name="btnAffirmative" Command="{Binding Close}" Margin="0,10,0,20" Content="(F2) Entendido" KeyboardNavigation.AcceptsReturn="True" Background="{DynamicResource firstColorDark}" Foreground="{DynamicResource IdealForegroundColor}" Grid.Row="1"  BorderBrush="{Binding ElementName=window, Path=Foreground}" Width="Auto" HorizontalAlignment="Center" />
+        </Grid>
+    </Grid>
+</Window>

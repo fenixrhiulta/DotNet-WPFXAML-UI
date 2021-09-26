@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    >
+    <FontFamily x:Key="SIMPLIFICA">pack://application:,,,/RhiultaUI;component/Fonts/SIMPLIFICA.ttf#Simplifica</FontFamily>
+    <FontFamily x:Key="DROIDSANS">pack://application:,,,/RhiultaUI;component/Fonts/DROIDSANS.ttf#Droid Sans</FontFamily>
+    <FontFamily x:Key="BEBASNEUE" >pack://application:,,,/RhiultaUI;component/Fonts/BEBASNEUE.ttf#Bebas neue</FontFamily>
+    <FontFamily x:Key="BEBASNEUEBOOK" >pack://application:,,,/RhiultaUI;component/Fonts/BEBASNEUEBOOK.ttf#Bebas neue book</FontFamily>
+    <FontFamily x:Key="BEBASNEUELIGHT" >pack://application:,,,/RhiultaUI;component/Fonts/BEBASNEUELIGHT.ttf#Bebas neue light</FontFamily>
+    <FontFamily x:Key="ROBOTOREGULAR">pack://application:,,,/RhiultaUI;component/Fonts/ROBOTO.ttf#Roboto</FontFamily>
+    <FontFamily x:Key="HELVETICA">pack://application:,,,/RhiultaUI;component/Fonts/HELVETICA.ttf#Helvetica</FontFamily>
+    <FontFamily x:Key="ASENINE">pack://application:,,,/RhiultaUI;component/Fonts/ASENINE.ttf#Asenine</FontFamily>
+    <FontFamily x:Key="LUCIDA">pack://application:,,,/RhiultaUI;component/Fonts/LUCIDA.ttf#Lucida Sans</FontFamily>
+
+</ResourceDictionary>

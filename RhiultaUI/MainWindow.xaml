@@ -3,10 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RhiultaUI"
+        xmlns:Rhiulta="clr-namespace:RhiultaUI"
+        xmlns:View="clr-namespace:RhiultaUI.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <!--<Path Data="M791.5,2.79 L795.5,6.33" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="5" Margin="792,3,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="5"/>-->
+        <!--<Path Fill="Red" Data="M-3.5032458E-46,3.284293E-47 L4.15625,3.8525 8.3333333,0.20666671 4.71875,4.44625 8.5,9 4.3282601,4.8681589 0.27617674,8.9114923 3.71875,4.25875" Margin="8,7,784,418" />-->
 
+        <View:TextBoxView/>
     </Grid>
 </Window>

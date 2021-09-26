@@ -1,0 +1,236 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:RhiultaUI="clr-namespace:RhiultaUI"
+                    xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                    xmlns:sw="clr-namespace:WpfStyleableWindow.StyleableWindow">
+
+    <!--<RhiultaUI:WindowSize x:Key="WindowSize" />-->
+    <sw:WindowMinimizeCommand x:Key="MinimizeCommand"></sw:WindowMinimizeCommand>
+    <sw:WindowMaximizeCommand x:Key="MaximizeCommand"></sw:WindowMaximizeCommand>
+    <sw:WindowCloseCommand x:Key="CloseCommand"></sw:WindowCloseCommand>
+
+    <!--icons-->
+    <Geometry x:Key="DataCloseButton">
+        <!--M794.96875,1.13375 C796.04713,2.2979151 797.20358,3.4007391 798.375,4.4775 M794.99869,4.2816344 C795.97404,3.5397022 797.52666,2.0971984 798.30404,1.1086718-->
+        <!--M10.009,1.704L8.331,0.026 5.03,3.327 1.703,0 0,1.704 3.326,5.031 0.025,8.332 1.703,10.009 5.004,6.708 8.305,10.009 10.009,8.305 6.708,5.005-->
+
+    </Geometry>
+    <Geometry x:Key="DataMaximizeButton">
+        F1M0,0L0,9 9,9 9,0 0,0 0,3 8,3 8,8 1,8 1,3z
+    </Geometry>
+    <Geometry x:Key="DataMinimizeButton">
+        F1M0,6L0,9 9,9 9,6 0,6z
+    </Geometry>
+
+    <!--button-->
+    <Style x:Key="WindowButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="35" />
+        <Setter Property="Width" Value="35" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource controlForegroundColorSB}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.7" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource primaryColorSB}" />
+                            <Setter Property="Foreground" Value="{DynamicResource primaryInvertColorSB}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--control template-->
+    <ControlTemplate x:Key="WindowTemplate" TargetType="{x:Type Window}">
+        <Border x:Name="Border"
+                BorderThickness="{TemplateBinding BorderThickness}">
+            <Grid x:Name="Content">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition x:Name="row1" Height="Auto" />
+                        <RowDefinition x:Name="row2" Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" x:Name="Header" Height="35" Background="{TemplateBinding RhiultaUI:WindowHelper.TitleBackground}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="WindowTitle" Padding="0" Grid.Column="0" Grid.ColumnSpan="3" Content="{TemplateBinding Property=Title}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="{TemplateBinding RhiultaUI:WindowHelper.TitleForeground}"  FontSize="13" sw:WindowDragBehavior.LeftMouseButtonDrag="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" sw:ControlDoubleClickBehavior.ExecuteCommand="{StaticResource MaximizeCommand}" sw:ControlDoubleClickBehavior.ExecuteCommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" sw:ShowSystemMenuBehavior.TargetWindow="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" sw:ShowSystemMenuBehavior.RightButtonShow="true" />
+                        <StackPanel  VerticalAlignment="Top"  x:Name="WindowButton" Grid.Column="2" Orientation="Horizontal">
+                            <Button ToolTip="Minimizar"  Style="{DynamicResource WindowButton}" IsTabStop="False" x:Name="btnMinimize" VerticalContentAlignment="Center" HorizontalAlignment="Center" BorderThickness="0" DockPanel.Dock="Right" Command="{StaticResource MinimizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}">
+                                <icons:PackIconCodicons Kind="ChromeMinimize" Width="10" Height="10" Foreground="{Binding ElementName=btnMinimize, Path=Foreground}"/>
+                            </Button>
+                            <Grid>
+                                <Button ToolTip="Restaurar" Style="{DynamicResource WindowButton}"  IsTabStop="False" x:Name="btnRestore" VerticalContentAlignment="Center" HorizontalAlignment="Center" BorderThickness="0" DockPanel.Dock="Right" Command="{StaticResource MaximizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}">
+                                    <icons:PackIconCodicons RenderOptions.BitmapScalingMode="HighQuality" Kind="ChromeRestore" SnapsToDevicePixels="True"  Width="10" Height="10" Foreground="{Binding ElementName=btnRestore, Path=Foreground}"/>
+                                </Button>
+                                <Button ToolTip="Maximizar" Style="{DynamicResource WindowButton}" IsTabStop="False" x:Name="btnMaximize" VerticalContentAlignment="Center" HorizontalAlignment="Center" BorderThickness="0" DockPanel.Dock="Right" Command="{StaticResource MaximizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}">
+                                    <icons:PackIconCodicons RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True" Kind="ChromeMaximize"  Width="10" Height="10" Foreground="{Binding ElementName=btnMaximize, Path=Foreground}"/>
+                                </Button>
+                            </Grid>
+                            <Button ToolTip="Fechar"  IsTabStop="False" x:Name="btnClose" VerticalContentAlignment="Center" HorizontalAlignment="Center" BorderThickness="0" DockPanel.Dock="Right" Command="{StaticResource CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}">
+                                <icons:PackIconCodicons Kind="ChromeClose" Width="10" Height="10" Foreground="{Binding ElementName=btnClose, Path=Foreground}"/>
+                                <Button.Style>
+                                    <Style TargetType="Button" BasedOn="{StaticResource WindowButton}">
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="{DynamicResource redColorSB}" />
+                                                <Setter Property="Foreground" Value="{DynamicResource primaryInvertColorSB}" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1" Background="{TemplateBinding Background}">
+                        <AdornerDecorator>
+                            <ContentPresenter x:Name="WindowContent" />
+                        </AdornerDecorator>
+                        <ResizeGrip x:Name="WindowResizeGrip" HorizontalAlignment="Right" IsTabStop="false" Visibility="Collapsed" VerticalAlignment="Bottom" />
+                    </Grid>
+                </Grid>
+                <Border x:Name="borderWindow" BorderThickness="0" IsHitTestVisible="False" BorderBrush="#222" />
+                <Thumb x:Name="ThumbTop" Height="6" Margin="14,0" VerticalAlignment="Top" Cursor="SizeNS" Opacity="0" sw:WindowResizeBehavior.TopResize="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+                <Thumb x:Name="ThumbTopLeft" Height="6" Width="6" VerticalAlignment="Top" HorizontalAlignment="Left" Cursor="SizeNWSE" Opacity="0" sw:WindowResizeBehavior.TopLeftResize="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+                <Thumb x:Name="ThumbBottom" Height="6" Margin="14,0" VerticalAlignment="Bottom" Cursor="SizeNS" Opacity="0" sw:WindowResizeBehavior.BottomResize="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+                <Thumb x:Name="ThumbTopRight" Height="6" Width="6" VerticalAlignment="Top" HorizontalAlignment="Right" Cursor="SizeNESW" Opacity="0" sw:WindowResizeBehavior.TopRightResize="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+                <Thumb x:Name="ThumbRight" HorizontalAlignment="Right" Margin="0,14" Width="6" Cursor="SizeWE" Opacity="0" sw:WindowResizeBehavior.RightResize="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+                <Thumb x:Name="ThumbBottomRight" Height="6" Width="6" VerticalAlignment="Bottom" HorizontalAlignment="Right" Cursor="SizeNWSE" Opacity="0" sw:WindowResizeBehavior.BottomRightResize="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+                <Thumb x:Name="ThumbLeft" HorizontalAlignment="Left" Margin="0,14" Width="6" Cursor="SizeWE" Opacity="0" sw:WindowResizeBehavior.LeftResize="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+                <Thumb x:Name="ThumbBottomLeft" Height="6" Width="6" VerticalAlignment="Bottom" HorizontalAlignment="Left" Cursor="SizeNESW" Opacity="0" sw:WindowResizeBehavior.BottomLeftResize="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+            </Grid>
+        </Border>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="RhiultaUI:WindowHelper.WindowState" Value="Maximized">
+                <Setter Property="Visibility" TargetName="ThumbTop" Value="Hidden" />
+                <Setter Property="Visibility" TargetName="ThumbTopLeft" Value="Hidden" />
+                <Setter Property="Visibility" TargetName="ThumbBottom" Value="Hidden" />
+                <Setter Property="Visibility" TargetName="ThumbLeft" Value="Hidden" />
+                <Setter Property="Visibility" TargetName="ThumbTopRight" Value="Hidden" />
+                <Setter Property="Visibility" TargetName="ThumbRight" Value="Hidden" />
+                <Setter Property="Visibility" TargetName="ThumbBottomRight" Value="Hidden" />
+                <Setter Property="Visibility" TargetName="ThumbBottomLeft" Value="Hidden" />
+            </Trigger>
+
+            <Trigger Property="IsActive" Value="False">
+                <Setter  TargetName="Border" Property="BorderBrush" Value="#999" />
+            </Trigger>
+
+            <!--WINDOW RESIZE -->
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ResizeMode" Value="CanResizeWithGrip" />
+                    <Condition Property="WindowState" Value="Normal" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Visibility" TargetName="WindowResizeGrip" Value="Visible" />
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ResizeMode" Value="NoResize" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Visibility" TargetName="btnMinimize" Value="Hidden" />
+                <Setter Property="Visibility" TargetName="btnRestore" Value="Hidden" />
+            </MultiTrigger>
+
+            <!--WINDOW STYLE NONE-->
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="RhiultaUI:WindowHelper.WindowStyle" Value="None" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Height" TargetName="row1" Value="0" />
+                <Setter Property="BorderThickness" TargetName="borderWindow" Value="0" />
+
+                <Setter Property="Visibility" TargetName="Header" Value="Collapsed" />
+                <Setter Property="Visibility" TargetName="ThumbTop" Value="Hidden" />
+                <Setter Property="Visibility" TargetName="ThumbTopLeft" Value="Hidden" />
+                <Setter Property="Visibility" TargetName="ThumbBottom" Value="Hidden" />
+                <Setter Property="Visibility" TargetName="ThumbTopRight" Value="Hidden" />
+                <Setter Property="Visibility" TargetName="ThumbBottomRight" Value="Hidden" />
+                <Setter Property="Visibility" TargetName="ThumbLeft" Value="Hidden" />
+                <Setter Property="Visibility" TargetName="ThumbBottomLeft" Value="Hidden" />
+            </MultiTrigger>
+
+            <!--BUTTONS-->
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="RhiultaUI:WindowHelper.CloseButton" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Visibility" TargetName="btnClose" Value="Hidden" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="RhiultaUI:WindowHelper.RestoreButton" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Visibility" TargetName="btnRestore" Value="Hidden" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="RhiultaUI:WindowHelper.MinimizeButton" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Visibility" TargetName="btnMinimize" Value="Hidden" />
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="RhiultaUI:WindowHelper.WindowState" Value="Maximized" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Height" TargetName="btnRestore" Value="35" />
+                <Setter Property="Height" TargetName="btnMaximize" Value="0" />
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="RhiultaUI:WindowHelper.WindowState" Value="Normal" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Height" TargetName="btnRestore" Value="0" />
+                <Setter Property="Height" TargetName="btnMaximize" Value="35" />
+            </MultiTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="BaseWindowStyle" TargetType="Window">
+        <Setter Property="WindowStyle" Value="None" />
+        <Setter Property="AllowsTransparency" Value="True" />
+        <Setter Property="RhiultaUI:WindowHelper.WindowStyle" Value="SingleBorderWindow" />
+        <Setter Property="RhiultaUI:WindowHelper.CloseButton" Value="True" />
+        <Setter Property="RhiultaUI:WindowHelper.RestoreButton" Value="True" />
+        <Setter Property="RhiultaUI:WindowHelper.MinimizeButton" Value="True" />
+        <Setter Property="RhiultaUI:WindowHelper.MonitoringWindow" Value="True" />
+        <Setter Property="RhiultaUI:WindowHelper.TitleBackground" Value="{DynamicResource controlBackgroundColorSB}" />
+        <Setter Property="RhiultaUI:WindowHelper.TitleForeground" Value="{DynamicResource primaryColorSB}" />
+        <Setter Property="RhiultaUI:WindowHelper.FixCloseProblem" Value="True" />
+        <Setter Property="Background" Value="{DynamicResource controlBackgroundColorSB}"/>
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="MinHeight" Value="150" />
+        <Setter Property="MinWidth" Value="200" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="#000" />
+        <Setter Property="Template" Value="{StaticResource WindowTemplate}" />
+        <Setter Property="Language" Value="pt-br" />
+        <Setter Property="Topmost" Value="True"/>
+    </Style>
+
+    <Style TargetType="{x:Type Window}" BasedOn="{StaticResource BaseWindowStyle}" />
+
+    <Style TargetType="Window" x:Key="WindowDialogStyle" BasedOn="{StaticResource BaseWindowStyle}">
+        <Setter Property="RhiultaUI:WindowHelper.WindowStyle" Value="None" />
+        <Setter Property="ResizeMode" Value="NoResize" />
+        <Setter Property="AllowsTransparency" Value="True" />
+        <Setter Property="SizeToContent" Value="Width" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+</ResourceDictionary>
