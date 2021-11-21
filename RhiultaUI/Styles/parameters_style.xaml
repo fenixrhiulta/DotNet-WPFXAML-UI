@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+
+    <!--window design size-->
+    <sys:Double x:Key="1024">1024</sys:Double>
+    <sys:Double x:Key="768">768</sys:Double>
+
+
+</ResourceDictionary>

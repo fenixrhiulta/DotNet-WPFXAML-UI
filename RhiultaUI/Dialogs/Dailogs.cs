@@ -40,19 +40,19 @@ namespace RhiultaUI
         //    win.ShowDialog();
         //}
 
-        //public static void Sucesso(Window owner, string msg = "", string desc = "")
-        //{
-        //    Dialogs.DialogCustomSucesso win = new Dialogs.DialogCustomSucesso();
-        //    win.info.Text = msg;
-        //    win.infosub.Text = desc;
-        //    win.Owner = owner;
-        //    win.WindowState = WindowState.Normal;
-        //    win.Height = owner.ActualHeight;
-        //    win.Width = owner.ActualWidth;
-        //    win.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+        public static void Sucesso(Window owner, string msg = "", string desc = "")
+        {
+            DialogCustomSucesso win = new DialogCustomSucesso();
+            win.info.Text = msg;
+            win.infosub.Text = desc;
+            win.Owner = owner;
+            win.WindowState = WindowState.Normal;
+            win.Height = owner.ActualHeight;
+            win.Width = owner.ActualWidth;
+            win.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
-        //    win.ShowDialog();
-        //}
+            win.ShowDialog();
+        }
 
 
         public static LoadingController ShowLoadingOwner(Window win = null, string msg = "Por favor, aguarde carregar as informações...")

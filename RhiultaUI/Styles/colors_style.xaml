@@ -13,16 +13,24 @@
     <Color x:Key="highlightInvertColor">#FFFDE7</Color>
 
     <Color x:Key="redColor">#D32F2F</Color>
+    <Color x:Key="greenColor">#00C853</Color>
 
     <SolidColorBrush x:Key="primaryColorSB" Color="{DynamicResource primaryColor}" />
     <SolidColorBrush x:Key="primaryColorSB_80" Opacity="0.8" Color="{DynamicResource primaryColor}" />
+    <SolidColorBrush x:Key="primaryColorSB_10" Opacity="0.1" Color="{DynamicResource primaryColor}" />
+
     <SolidColorBrush x:Key="primaryDarkColorSB" Color="{DynamicResource primaryDarkColor}" />
+    <SolidColorBrush x:Key="primaryDarkColorSB_80" Opacity="0.8" Color="{DynamicResource primaryDarkColor}" />
+
     <SolidColorBrush x:Key="primaryInvertColorSB" Color="{DynamicResource primaryInvertColor}" />
+    <SolidColorBrush x:Key="primaryInvertColorSB_10" Opacity="0.1" Color="{DynamicResource primaryInvertColor}" />
+
     <SolidColorBrush x:Key="controlBackgroundColorSB" Color="{DynamicResource controlBackgroundColor}" />
     <SolidColorBrush x:Key="controlForegroundColorSB" Color="{DynamicResource controlForegroundColor}" />
     <SolidColorBrush x:Key="highlightColorSB" Color="{DynamicResource highlightColor}" />
 
     <SolidColorBrush x:Key="redColorSB" Color="{DynamicResource redColor}" />
+    <SolidColorBrush x:Key="greenColorSB" Color="{DynamicResource greenColor}" />
 
 
     <!--<Color x:Key="firstColor" R="20" G="20" B="20" A="255" />
@@ -36,7 +44,7 @@
 
     <!--<SolidColorBrush x:Key="darkColorSB_80" Color="{StaticResource darkColor_80}"/>
     <SolidColorBrush x:Key="firstColorSB" Color="{DynamicResource firstColor}" />
-    <SolidColorBrush x:Key="firstColorDarkSB" Color="{DynamicResource firstColorDark}" />
+    <SolidColorBrush x:Key="firstColorDarkSB" Color="{DynamicResource primaryColor}" />
     <SolidColorBrush x:Key="firstColorHighlightSB" Color="{DynamicResource firstColorHighlight}" />
     <SolidColorBrush x:Key="firstColorBackgroundSB" Color="{DynamicResource IdealForegroundColor}" />
     <SolidColorBrush x:Key="IdealForegroundColorSB" Color="{DynamicResource IdealForegroundColor}" />

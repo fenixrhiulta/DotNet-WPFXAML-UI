@@ -27,7 +27,6 @@ namespace RhiultaUI
             obj.SetValue(HideWindowCloseProperty, value);
         }
 
-
         static bool AltDown = false;
 
         static private void HideWindowClosePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -81,6 +80,16 @@ namespace RhiultaUI
                 {
                     var windowState = GetWindowState(element);
                     if (windowState == WindowState.Maximized) WindowCore.WindowMaximize(element);
+                };
+                element.KeyDown += (s, e) =>
+                {
+                    if (e.Key == Key.Enter && (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+                    {
+                        var windowState = GetWindowState(element);
+                        if (windowState == WindowState.Maximized) WindowCore.WindowRestore(element);
+                        if (windowState == WindowState.Normal) WindowCore.WindowMaximize(element);
+                        e.Handled = true;
+                    }
                 };
                 element.Loaded += Element_Loaded;
             } else { element.Loaded -= Element_Loaded; }
@@ -181,6 +190,22 @@ namespace RhiultaUI
 
         #endregion
 
+        #region FullScreen
+
+        public static readonly DependencyProperty FullScreenProperty = DependencyProperty.RegisterAttached("FullScreen", typeof(bool), typeof(WindowHelper), new FrameworkPropertyMetadata(false));
+
+        public static bool GetFullScreen(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(FullScreenProperty);
+        }
+
+        public static void SetFullScreen(DependencyObject obj, bool value)
+        {
+            obj.SetValue(FullScreenProperty, value);
+        }
+
+        #endregion
+
         #region MinimizeButton
 
         public static readonly DependencyProperty MinimizeButtonProperty = DependencyProperty.RegisterAttached("MinimizeButton", typeof(bool), typeof(WindowHelper), new FrameworkPropertyMetadata(null));
@@ -265,6 +290,22 @@ namespace RhiultaUI
 
         #endregion
 
+        #region props
+
+        public static readonly DependencyProperty ContentHeaderProperty = DependencyProperty.Register("ContentHeader", typeof(DependencyObject), typeof(WindowHelper));
+
+        public static DependencyObject GetContentHeader(DependencyObject obj)
+        {
+            return (DependencyObject)obj.GetValue(ContentHeaderProperty);
+        }
+
+        public static void SetContentHeader(DependencyObject obj, DependencyObject value)
+        {
+            obj.SetValue(ContentHeaderProperty, value);
+        }
+        #endregion
+
+
 
         //public static readonly DependencyProperty WindowStyleProperty = DependencyProperty.RegisterAttached("WindowStyle", typeof(WindowStyle), typeof(WindowHelper), new FrameworkPropertyMetadata(null));
 
@@ -277,6 +318,97 @@ namespace RhiultaUI
         //{
         //    obj.SetValue(WindowStyleProperty, value);
         //}
+
+        #region PreventCloseWindow
+        public static readonly DependencyProperty PreventCloseWindowProperty = DependencyProperty.RegisterAttached("PreventCloseWindow", typeof(bool), typeof(WindowHelper), new FrameworkPropertyMetadata(OnPreventCloseWindowPropertyChanged));
+
+
+        public static bool GetPreventCloseWindow(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(PreventCloseWindowProperty);
+        }
+
+        public static void SetPreventCloseWindow(DependencyObject obj, bool value)
+        {
+            obj.SetValue(PreventCloseWindowProperty, value);
+        }
+
+        public static void OnPreventCloseWindowPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var element = d as Window;
+            if (element == null) return;
+
+            if ((bool)e.NewValue)
+            {
+                element.KeyDown += KeyDown;
+                element.PreviewKeyDown += PreviewKeyDown;
+            }
+            else
+            {
+                element.KeyDown -= KeyDown;
+                element.PreviewKeyDown -= PreviewKeyDown;
+            }
+        }
+
+        public static void PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt))
+            {
+                e.Handled = true;
+                if (e.SystemKey == Key.F4)
+                {
+                    e.Handled = true;
+                }
+            }
+
+            //if (e.Key == Key.F2 && Keyboard.Modifiers.HasFlag(ModifierKeys.Alt))
+            //{
+            //    MessageBox.Show("TRUE");
+            //    e.Handled = true;
+            //}
+        }
+
+        public static void KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.SystemKey == Key.F10)
+            {
+                e.Handled = true;
+            }
+        }
+
+        #endregion
+
+        #region StartCenterScreen
+
+        public static readonly DependencyProperty StartCenterScreenProperty = DependencyProperty.RegisterAttached("StartCenterScreen", typeof(bool), typeof(WindowHelper), new FrameworkPropertyMetadata(OnStartCenterScreenPropertyChanged));
+
+        public static bool GetStartCenterScreen(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(PreventCloseWindowProperty);
+        }
+
+        public static void SetStartCenterScreen(DependencyObject obj, bool value)
+        {
+            obj.SetValue(PreventCloseWindowProperty, value);
+        }
+
+        static void OnStartCenterScreenPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var element = d as Window;
+            if (element == null) return;
+
+            if ((bool)e.NewValue)
+            {
+                element.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            }
+            else
+            {
+                element.WindowStartupLocation = WindowStartupLocation.Manual;
+            }
+        }
+
+        #endregion
+
 
 
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace RhiultaUI
@@ -25,6 +26,7 @@ namespace RhiultaUI
 
         public static string RemoveDiacritics(string text)
         {
+            if (text.IsNullOrWhiteSpace()) return "";
             var normalizedString = text.Normalize(NormalizationForm.FormD);
             var stringBuilder = new StringBuilder();
 
@@ -39,6 +41,13 @@ namespace RhiultaUI
 
             return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
         }
+
+        public static string GerarUid(string value)
+        {
+            string tmp = Regex.Replace(value, "[^0-9a-zA-Z]+", "");
+            return tmp;
+        }
+
     }
 
 }

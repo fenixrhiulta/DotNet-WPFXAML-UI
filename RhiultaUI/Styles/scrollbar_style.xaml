@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+
     <SolidColorBrush x:Key="StandardBorderBrush" Color="#888" />
     <SolidColorBrush x:Key="StandardBackgroundBrush" Color="Black" />
     <SolidColorBrush x:Key="HoverBorderBrush" Color="#DDD" />
@@ -64,7 +64,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style x:Key="ScrollBarPageButton" TargetType="{x:Type RepeatButton}">
         <Setter Property="Visibility" Value="Hidden"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
@@ -101,7 +101,7 @@
                 <RowDefinition Height="0.00001*"/>
                 <RowDefinition MaxHeight="0"/>
             </Grid.RowDefinitions>
-            <Border Grid.RowSpan="3" CornerRadius="2" Background="{DynamicResource firstColorDarkSB}" Opacity="0.5"/>
+            <Border Grid.RowSpan="3" CornerRadius="2" Background="{DynamicResource primaryDarkColorSB}" Opacity="0.5"/>
             <RepeatButton Grid.Row="0" Style="{StaticResource ScrollBarLineButton}" Height="18" Command="ScrollBar.LineUpCommand" Content="M 0 4 L 8 4 L 4 0 Z" />
             <Track Name="PART_Track" Grid.Row="1" IsDirectionReversed="true">
                 <Track.DecreaseRepeatButton>
@@ -124,7 +124,7 @@
                 <ColumnDefinition Width="0.00001*"/>
                 <ColumnDefinition MaxWidth="18"/>
             </Grid.ColumnDefinitions>
-            <Border Grid.ColumnSpan="3" CornerRadius="2" Background="{DynamicResource firstColorDarkSB}" Opacity="0.5"/>
+            <Border Grid.ColumnSpan="3" CornerRadius="2" Background="{DynamicResource primaryDarkColorSB}" Opacity="0.5"/>
             <RepeatButton Grid.Column="0"  Style="{StaticResource ScrollBarLineButton}" Width="18" Command="ScrollBar.LineLeftCommand" Content="M 4 0 L 4 8 L 0 4 Z" />
             <Track Name="PART_Track" Grid.Column="1" IsDirectionReversed="False">
                 <Track.DecreaseRepeatButton>

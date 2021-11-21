@@ -2,7 +2,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Name="window" mc:Ignorable="d"
          xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
-          WindowStyle="None" ResizeMode="NoResize" 
+          WindowStyle="None" ResizeMode="NoResize"
+        RhiultaUI:WindowHelper.WindowStyle="None"
         KeyboardNavigation.TabNavigation="None"  BorderThickness="0" Background="Transparent" AllowsTransparency="True" >
     <Grid >
         <Grid.Background>
@@ -11,7 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <StackPanel VerticalAlignment="Center"   Background="{DynamicResource firstColorDarkSB}" >
+        <StackPanel VerticalAlignment="Center"   Background="{DynamicResource primaryDarkColorSB}" >
             <icons:PackIconFontAwesome Kind="CircleNotchSolid" Margin="10" Height="100" Width="100" HorizontalAlignment="Center" Foreground="White" Spin="True" SpinDuration="3">
                 <icons:PackIconFontAwesome.SpinEasingFunction>
                     <ExponentialEase Exponent="5"/>

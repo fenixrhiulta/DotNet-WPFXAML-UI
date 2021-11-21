@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="RhiultaUI.View.TextBoxView"
+﻿<UserControl x:Class="RhiultaUI.View.ButtonView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -9,10 +9,12 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <StackPanel Margin="10" Width="300" HorizontalAlignment="Left">
-            <TextBox RhiultaUI:TextBoxHelper.Placeholder="Common Field"/>
-            <TextBox RhiultaUI:TextBoxHelper.Placeholder="With icon" RhiultaUI:TextBoxHelper.IconAwesome="AccusoftBrands" />
-            <TextBox RhiultaUI:TextBoxHelper.Placeholder="Custom icon"/>
-            <TextBox RhiultaUI:TextBoxHelper.Placeholder="Validate text" Text="{Binding model.input1, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Margin="5" Content="BUTTON SQUARE" Style="{DynamicResource ButtonSquare}"/>
+            <Border Background="{DynamicResource primaryColorSB}">
+                <Button Margin="5" Content="BUTTON SQUARE" Style="{DynamicResource ButtonSquareHighlight}"/>
+            </Border>
+            <Button Margin="5" Content="BUTTON FLAT" Style="{DynamicResource ButtonFlat}"/>
+            <Button Margin="5" Content="BUTTON TRANSPARENT" Style="{DynamicResource ButtonTransparent}"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -1,4 +1,4 @@
-﻿<Window x:Class="RhiultaUI.DialogCustomAlerta"
+﻿<Window x:Class="RhiultaUI.DialogCustomSucesso"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -46,9 +46,9 @@
                 <RowDefinition Height="109*" />
                 <RowDefinition Height="91*" />
             </Grid.RowDefinitions>
-            <Border x:Name="BorderAlert" BorderThickness="0" BorderBrush="{DynamicResource primaryDarkColorSB}" Grid.RowSpan="3"/>
+            <Border x:Name="BorderAlert" BorderThickness="0" BorderBrush="{DynamicResource primaryColorSB}" Grid.RowSpan="3"/>
             <DockPanel HorizontalAlignment="Center" Margin="10" >
-                <!--<icons:PackIconModern Foreground="Yellow" DockPanel.Dock="Left" x:Name="PackIconFontAwesome" Height="50" Width="Auto" Margin="-5, 10,10,10" Kind="Warning" RenderTransformOrigin="0.5,0.5" >
+                <icons:PackIconModern Foreground="{DynamicResource primaryInvertColorSB}" DockPanel.Dock="Left" x:Name="PackIconFontAwesome" Height="50" Width="Auto" Margin="-5, 10,10,10" Kind="Check" RenderTransformOrigin="0.5,0.5" >
                     <icons:PackIconModern.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -57,13 +57,13 @@
                             <TranslateTransform/>
                         </TransformGroup>
                     </icons:PackIconModern.RenderTransform>
-                </icons:PackIconModern>-->
+                </icons:PackIconModern>
                 <DockPanel  DockPanel.Dock="Left" VerticalAlignment="Center" HorizontalAlignment="Center" >
                     <TextBlock DockPanel.Dock="Top" x:Name="info" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0" Text="xxxxxxxxxxxxxxxxxxxxxx" FontSize="30"  TextWrapping="Wrap"/>
                     <TextBlock  DockPanel.Dock="Top" x:Name="infosub"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0" Text="xxxxxxxxxxxxxxxxxxxxxx" FontSize="25"  TextWrapping="Wrap" FontStyle="Italic"/>
                 </DockPanel>
             </DockPanel>
-            <Button x:Name="btnAffirmative" Command="{Binding Close}" FontFamily="{DynamicResource ROBOTOREGULAR}" Margin="0,10,0,20" Content="(F2) Entendido" KeyboardNavigation.AcceptsReturn="True" Background="{DynamicResource primaryDarkColorSB}" Foreground="{DynamicResource primaryInvertColorSB}" Grid.Row="1"  BorderBrush="{Binding ElementName=window, Path=Foreground}" Width="Auto" HorizontalAlignment="Center" />
+            <Button x:Name="btnAffirmative" Command="{Binding Close}" Margin="0,10,0,20" Content="OK" KeyboardNavigation.AcceptsReturn="True" Background="{DynamicResource primaryDarkColorSB}" Foreground="{DynamicResource primaryInvertColorSB}" Grid.Row="1"  BorderBrush="{Binding ElementName=window, Path=Foreground}" Width="Auto" HorizontalAlignment="Center" />
         </Grid>
     </Grid>
 </Window>

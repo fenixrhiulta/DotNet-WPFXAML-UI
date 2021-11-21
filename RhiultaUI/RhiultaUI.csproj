@@ -7,13 +7,67 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\ASENINE.ttf" />
+    <None Remove="Fonts\BEBASNEUE.ttf" />
+    <None Remove="Fonts\BEBASNEUEBOOK.ttf" />
+    <None Remove="Fonts\BEBASNEUELIGHT.ttf" />
+    <None Remove="Fonts\DROIDSANS.ttf" />
+    <None Remove="Fonts\HELVETICA.ttf" />
+    <None Remove="Fonts\LUCIDA.ttf" />
+    <None Remove="Fonts\MONTSERRAT.ttf" />
+    <None Remove="Fonts\ROBOTOREGULAR.ttf" />
+    <None Remove="Fonts\SIMPLIFICA.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MahApps.Metro.IconPacks" Version="4.9.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.37" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Fonts\ASENINE.ttf" />
+    <Resource Include="Fonts\BEBASNEUE.ttf" />
+    <Resource Include="Fonts\BEBASNEUEBOOK.ttf" />
+    <Resource Include="Fonts\BEBASNEUELIGHT.ttf" />
+    <Resource Include="Fonts\DROIDSANS.ttf" />
+    <Resource Include="Fonts\HELVETICA.ttf" />
+    <Resource Include="Fonts\LUCIDA.ttf" />
+    <Resource Include="Fonts\MONTSERRAT.ttf" />
+    <Resource Include="Fonts\ROBOTOREGULAR.ttf" />
+    <Resource Include="Fonts\SIMPLIFICA.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="View\DatagridView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\ButtonView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\GroupBoxView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Dialogs\DialogCustomSucesso.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Styles\tooltip_style.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\DataGridView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ButtonView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\GroupBoxView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

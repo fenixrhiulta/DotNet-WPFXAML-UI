@@ -37,6 +37,7 @@ namespace RhiultaUI
             this.Height = owner.Height;
             this.Owner = owner;
             this.ShowInTaskbar = false;
+            this.WindowStyle = WindowStyle.None;
             owner.PreviewKeyDown += DisableKeyDown;
             owner.PreviewMouseDown += Owner_PreviewMouseDown; ;
             this.KeyDown += (a, e) =>

@@ -40,12 +40,22 @@ namespace RhiultaUI
             lastTop = window.Top;
 
             Left = 0;
-            Width = SystemParameters.WorkArea.Width;
+            bool IsFullScreen = RhiultaUI.WindowHelper.GetFullScreen(window);
+            if (IsFullScreen)
+            {
+                Width = SystemParameters.PrimaryScreenWidth;
+                Height = SystemParameters.PrimaryScreenHeight;
+            }
+            else
+            {
+                Width = SystemParameters.WorkArea.Width;
+                Height = SystemParameters.WorkArea.Height;
+            }
 
 
             //animationLeft(window, lastLeft, Left);
             //animationTop(window, 0);
-            animationHeight(window, SystemParameters.WorkArea.Height);
+            animationHeight(window, Height);
             animationWidth(window, lastWidth, Width);
 
             window.Left = SystemParameters.WorkArea.Left;

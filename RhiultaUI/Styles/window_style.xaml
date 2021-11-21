@@ -13,7 +13,6 @@
     <Geometry x:Key="DataCloseButton">
         <!--M794.96875,1.13375 C796.04713,2.2979151 797.20358,3.4007391 798.375,4.4775 M794.99869,4.2816344 C795.97404,3.5397022 797.52666,2.0971984 798.30404,1.1086718-->
         <!--M10.009,1.704L8.331,0.026 5.03,3.327 1.703,0 0,1.704 3.326,5.031 0.025,8.332 1.703,10.009 5.004,6.708 8.305,10.009 10.009,8.305 6.708,5.005-->
-
     </Geometry>
     <Geometry x:Key="DataMaximizeButton">
         F1M0,0L0,9 9,9 9,0 0,0 0,3 8,3 8,8 1,8 1,3z
@@ -65,6 +64,9 @@
                             <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
                         <Label x:Name="WindowTitle" Padding="0" Grid.Column="0" Grid.ColumnSpan="3" Content="{TemplateBinding Property=Title}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="{TemplateBinding RhiultaUI:WindowHelper.TitleForeground}"  FontSize="13" sw:WindowDragBehavior.LeftMouseButtonDrag="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" sw:ControlDoubleClickBehavior.ExecuteCommand="{StaticResource MaximizeCommand}" sw:ControlDoubleClickBehavior.ExecuteCommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" sw:ShowSystemMenuBehavior.TargetWindow="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" sw:ShowSystemMenuBehavior.RightButtonShow="true" />
+                        <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="20,0">
+                            <ContentControl Content="{Binding RhiultaUI:WindowHelper.ContentHeader}"/>
+                        </Grid>
                         <StackPanel  VerticalAlignment="Top"  x:Name="WindowButton" Grid.Column="2" Orientation="Horizontal">
                             <Button ToolTip="Minimizar"  Style="{DynamicResource WindowButton}" IsTabStop="False" x:Name="btnMinimize" VerticalContentAlignment="Center" HorizontalAlignment="Center" BorderThickness="0" DockPanel.Dock="Right" Command="{StaticResource MinimizeCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}">
                                 <icons:PackIconCodicons Kind="ChromeMinimize" Width="10" Height="10" Foreground="{Binding ElementName=btnMinimize, Path=Foreground}"/>
@@ -219,7 +221,6 @@
         <Setter Property="BorderBrush" Value="#000" />
         <Setter Property="Template" Value="{StaticResource WindowTemplate}" />
         <Setter Property="Language" Value="pt-br" />
-        <Setter Property="Topmost" Value="True"/>
     </Style>
 
     <Style TargetType="{x:Type Window}" BasedOn="{StaticResource BaseWindowStyle}" />

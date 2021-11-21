@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MasiDll
+namespace RhiultaUI
 {
     /// <summary>
     /// Interaction logic for UserControlContent.xaml
@@ -26,16 +26,16 @@ namespace MasiDll
             this.ResizeMode = ResizeMode.NoResize;
             this.Loaded += (s, e) =>
             {
-                if (Owner.WindowState == WindowState.Maximized)
-                {
-                    this.Top = 0;
-                    this.Left = 0;
-                }
-                if (Owner.WindowState == WindowState.Normal)
-                {
-                    this.Top = this.Owner.Top;
-                    this.Left = this.Owner.Left;
-                }
+                //if (Owner.WindowState == WindowState.Maximized)
+                //{
+                //    this.Top = 0;
+                //    this.Left = 0;
+                //}
+                //if (Owner.WindowState == WindowState.Normal)
+                //{
+                //    this.Top = this.Owner.Top;
+                //    this.Left = this.Owner.Left;
+                //}
             };
         }
     }
@@ -51,10 +51,20 @@ namespace MasiDll
             win.Content = userControl;
             win.Focusable = false;
             win.ShowInTaskbar = false;
-            win.Loaded += (s, e) =>
-            {
-                userControl.Focus();
-            };
+
+            var IsFullScreen = RhiultaUI.WindowHelper.GetFullScreen(App.Current.MainWindow);
+            var winState = RhiultaUI.WindowHelper.GetWindowState(App.Current.MainWindow);
+
+            if(IsFullScreen) RhiultaUI.WindowHelper.SetFullScreen(win, IsFullScreen);
+
+            if (winState == WindowState.Maximized) WindowCore.WindowMaximize(win);
+            if (winState == WindowState.Normal) WindowCore.WindowRestore(win);
+
+            //win.Loaded += (s, e) =>
+            //{
+            //    userControl.Focus();
+            //};
+
             win.ShowDialog();
             userControl = null;
             GC.Collect();
@@ -69,10 +79,20 @@ namespace MasiDll
             win.Content = userControl;
             win.Focusable = false;
             win.ShowInTaskbar = false;
-            win.Loaded += (s, e) =>
-            {
-                userControl.Focus();
-            };
+
+            var IsFullScreen = RhiultaUI.WindowHelper.GetFullScreen(App.Current.MainWindow);
+            var winState = RhiultaUI.WindowHelper.GetWindowState(App.Current.MainWindow);
+
+            if (IsFullScreen) RhiultaUI.WindowHelper.SetFullScreen(win, IsFullScreen);
+
+            if (winState == WindowState.Maximized) WindowCore.WindowMaximize(win);
+            if (winState == WindowState.Normal) WindowCore.WindowRestore(win);
+
+
+            //win.Loaded += (s, e) =>
+            //{
+            //    userControl.Focus();
+            //};
 
             win.ShowDialog();
             userControl = null;

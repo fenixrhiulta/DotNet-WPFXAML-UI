@@ -19,10 +19,10 @@ namespace RhiultaUI.View
     /// <summary>
     /// Interaction logic for TextBoxView.xaml
     /// </summary>
-    public partial class TextBoxView : UserControl
+    public partial class InputView : UserControl
     {
         public Model model { get; set; }
-        public TextBoxView()
+        public InputView()
         {
             model = new Model();
             this.DataContext = this;

@@ -1,13 +1,13 @@
 ﻿<UserControl x:Class="RhiultaUI.Drawer"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:local="clr-namespace:RhiultaUI"
              x:Name="uc"
-             Foreground="{DynamicResource IdealForegroundColorSB}"
+             Foreground="{DynamicResource primaryInvertColorSB}"
              mc:Ignorable="d" >
     <UserControl.Resources>
         <Storyboard x:Key="DrawerIn">
@@ -69,7 +69,7 @@
             </Behaviors:DataTrigger>
         </Behaviors:Interaction.Triggers>
         <Canvas>
-            <Border Padding="20,5" Background="{DynamicResource firstColorSB}" >
+            <Border Padding="20,5" Background="{DynamicResource primaryColorSB}" >
                 <Behaviors:Interaction.Triggers>
                     <Behaviors:EventTrigger EventName="MouseLeftButtonDown" >
                         <Behaviors:InvokeCommandAction Command="{Binding Open}"/>
@@ -94,15 +94,15 @@
                 </StackPanel>
             </Border>
         </Canvas>
-        <Border x:Name="border" Width="0"  Background="{DynamicResource firstColorDarkSB}" >
-            
+        <Border x:Name="border" Width="0"  Background="{DynamicResource primaryDarkColorSB}" >
+
             <Grid TextBlock.FontSize="20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <Border Background="{DynamicResource firstColorDarkSB}" Panel.ZIndex="99" HorizontalAlignment="Right" VerticalAlignment="Top"  Height="Auto">
+                    <Border Background="{DynamicResource primaryDarkColorSB}" Panel.ZIndex="99" HorizontalAlignment="Right" VerticalAlignment="Top"  Height="Auto">
                         <Behaviors:Interaction.Triggers>
                             <Behaviors:EventTrigger EventName="MouseLeftButtonDown" >
                                 <Behaviors:InvokeCommandAction Command="{Binding Close}"/>

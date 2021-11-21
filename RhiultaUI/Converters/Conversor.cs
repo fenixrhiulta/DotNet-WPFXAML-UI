@@ -45,6 +45,28 @@ namespace RhiultaUI
         }
     }
 
+    /// <summary>
+    /// Converte valores inverseBool
+    /// </summary>
+    public class InverseBool : System.Windows.Markup.MarkupExtension, IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if ((bool)value == false) return true;
+            if ((bool)value == true) return false;
+            return value;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return null;
+        }
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return this;
+        }
+    }
+
     public enum FormType
     {
         Undefined = 0,

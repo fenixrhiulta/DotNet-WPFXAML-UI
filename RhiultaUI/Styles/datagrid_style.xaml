@@ -85,7 +85,7 @@
                         RelativeSource={RelativeSource TemplatedParent}}"/>
                             </Grid>
 
-                            <!--<Border Background="Black" Height="100" Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Converter={RhiultaUIApp:SumCollection}}"/>-->
+                            <!--<Border Background="Black" Height="100" Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Converter={RhiultaApp:SumCollection}}"/>-->
 
                             <!--<Border BorderThickness="0,0,0,0"  Margin="10,5" BorderBrush="#555" Grid.ColumnSpan="3"  VerticalAlignment="Bottom" Grid.Row="3">
                                 <DockPanel LastChildFill="False" TextBlock.FontSize="11">
@@ -114,7 +114,6 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridCell}">
                     <Border x:Name="border"
-                            
                   BorderBrush="{TemplateBinding BorderBrush}"
                   BorderThickness="{TemplateBinding BorderThickness}"
                   Background="{TemplateBinding Background}"
@@ -135,9 +134,9 @@
         <Setter Property="Padding" Value="0"/>
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="{DynamicResource firstColorSB}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource firstColorDarkSB}" />
-                <Setter Property="Foreground" Value="{DynamicResource IdealForegroundColorSB}" />
+                <Setter Property="Background" Value="{DynamicResource primaryColorSB}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource primaryDarkColorSB}" />
+                <Setter Property="Foreground" Value="{DynamicResource primaryInvertColorSB}" />
                 <Setter Property="BorderThickness" Value="1"/>
             </Trigger>
         </Style.Triggers>
@@ -184,9 +183,9 @@
                             <Setter TargetName="DGR_Border" Property="Background" Value="#111" />
                         </Trigger>-->
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource darkColorSB_80}" />
-                            <Setter Property="BorderBrush" Value="{DynamicResource darkColorSB_80}" />
-                            <Setter Property="Foreground" Value="{DynamicResource IdealForegroundColorSB}" />
+                            <Setter Property="Background" Value="{DynamicResource primaryDarkColorSB}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource primaryDarkColorSB}" />
+                            <Setter Property="Foreground" Value="{DynamicResource primaryInvertColorSB}" />
                             <Setter Property="BorderThickness" Value="0"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -216,8 +215,8 @@
 
     <Style x:Key="DataGridColumnHeaderBase" TargetType="DataGridColumnHeader">
         <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="Foreground" Value="{DynamicResource IdealForegroundColorSB}" />
-        <Setter Property="Background" Value="{DynamicResource firstColorDarkSB}"/>
+        <Setter Property="Foreground" Value="{DynamicResource primaryInvertColorSB}" />
+        <Setter Property="Background" Value="{DynamicResource primaryDarkColorSB}"/>
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="MinHeight" Value="50"/>
@@ -231,7 +230,7 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Border x:Name="BackgroundBorder" Background="{TemplateBinding Background}" Opacity="0.3" TextBlock.Foreground="{TemplateBinding Foreground}" BorderThickness="0,0,0.3,0" BorderBrush="{DynamicResource IdealForegroundColorSB}" Grid.ColumnSpan="2" />
+                            <Border x:Name="BackgroundBorder" Background="{TemplateBinding Background}" TextBlock.Foreground="{TemplateBinding Foreground}" BorderThickness="0,0,0.3,0" BorderBrush="{DynamicResource primaryInvertColorSB}" Grid.ColumnSpan="2" />
                             <Border  x:Name="SortArrowContent"  Visibility="Collapsed" Margin="10,0,0,0"  VerticalAlignment="Center" >
                                 <icons:PackIconMaterialDesign x:Name="SortArrow" RenderTransformOrigin="0.5,0.5" Kind="ArrowUpward" Width="10" Height="10">
                                     <icons:PackIconMaterialDesign.RenderTransform>
@@ -253,7 +252,7 @@
                  HorizontalAlignment="Right"
                  Style="{StaticResource ColumnHeaderGripperStyle}" />
                     </Grid>
-                   
+
                     <ControlTemplate.Triggers>
                         <!--<Trigger Property="SortDirection" Value="{x:Null}">
                             <Setter TargetName="BackgroundBorder" Property="Background"  Value="#80000000" />
@@ -290,14 +289,15 @@
     </Style>
 
     <Style TargetType="DataGrid" x:Key="DataGridDefault">
-        <Setter Property="Foreground" Value="{DynamicResource IdealForegroundColorSB}" />
+        <Setter Property="Foreground" Value="{DynamicResource primaryInvertColorSB}" />
         <Setter Property="GridLinesVisibility" Value="All"/>
         <Setter Property="AutoGenerateColumns" Value="False"/>
-        <Setter Property="HorizontalGridLinesBrush" Value="#05EEEEEE"/>
-        <Setter Property="VerticalGridLinesBrush" Value="#03EEEEEE"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource primaryColorSB_10}"/>
+        <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource primaryColorSB_10}"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Background" Value="{DynamicResource firstColorSB}"/>
+        <Setter Property="Background" Value="{DynamicResource controlBackgroundColorSB}"/>
+        <Setter Property="Foreground" Value="{DynamicResource prymaryColorSB}"/>
         <Setter Property="FontFamily" Value="{DynamicResource DROIDSANS}"/>
         <Setter Property="Template" Value="{DynamicResource DataGridTemplate}"/>
         <Setter Property="CellStyle" Value="{DynamicResource DataGridCellBase}"/>

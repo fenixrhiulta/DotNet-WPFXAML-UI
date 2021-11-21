@@ -4,13 +4,14 @@
 
     <!--  ********************************** CheckBoxStyle **********************************  -->
     <!--  adapted from http://brianlagunas.com/free-metro-light-and-dark-themes-for-wpf-and-silverlight-microsoft-controls/  -->
-    <Style TargetType="{x:Type CheckBox}">
-        <Setter Property="Background" Value="{DynamicResource firstColorSB}" />
-        <Setter Property="BorderBrush" Value="#333" />
+    <Style x:Key="CheckBoxDefault" TargetType="{x:Type CheckBox}">
+        <Setter Property="Background" Value="{DynamicResource controlBackgroundColorSB}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource primaryColorSB}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="FontFamily" Value="{DynamicResource ContentFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource ContentFontSize}" />
-        <Setter Property="Foreground" Value="{DynamicResource IdealForegroundColorSB}"/>
+        <Setter Property="Foreground" Value="{DynamicResource primaryColorSB}"/>
+        <Setter Property="Margin" Value="5"/>
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="Padding" Value="6 0 0 0" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -33,7 +34,7 @@
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             <icons:PackIconMaterialLight Kind="Check" Opacity="0" RenderOptions.BitmapScalingMode="HighQuality" x:Name="checkBox" HorizontalAlignment="Center"  Width="12" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}"  Height="10"/>
-                            
+
                             <Rectangle x:Name="IndeterminateCheck"
                                        Width="8"
                                        Height="3"
@@ -83,5 +84,11 @@
             </Setter.Value>
         </Setter>
         <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="CheckBoxHighlight" BasedOn="{StaticResource CheckBoxDefault}" TargetType="CheckBox">
+        <Setter Property="Foreground" Value="{DynamicResource primaryInvertColorSB}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource primaryInvertColorSB}"/>
     </Style>
 </ResourceDictionary>

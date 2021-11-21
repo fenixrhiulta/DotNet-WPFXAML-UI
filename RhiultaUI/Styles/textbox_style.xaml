@@ -17,20 +17,280 @@
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="AllowDrop" Value="true" />
         <Setter Property="FontSize" Value="15" />
-        <Setter Property="BorderBrush" Value="#CCC" />
+        <Setter Property="BorderBrush" Value="{DynamicResource primaryColorSB}" />
         <Setter Property="BorderThickness" Value="0,0,0,0.1" />
         <Setter Property="Padding" Value="2"/>
         <Setter Property="Margin" Value="2"/>
-        <Setter Property="Height" Value="50"/>
+        <Setter Property="MinHeight" Value="40"/>
         <Setter Property="CharacterCasing" Value="Upper"/>
-        <Setter Property="FontFamily" Value="{DynamicResource ROBOTOREGULAR}"/>
-        <Setter Property="Foreground" Value="{DynamicResource IdealForegroundColorSB}" />
+        <Setter Property="Foreground" Value="{DynamicResource primaryColorSB}" />
         <Setter Property="Background" Value="#00000000" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
-                    <Border x:Name="Border" SnapsToDevicePixels="True" BorderBrush="{DynamicResource primaryColorSB}" BorderThickness="0,0,0,0.5" CornerRadius="0" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" >
+                    <Border x:Name="Border" SnapsToDevicePixels="True" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,0,0,0.5" CornerRadius="0" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" >
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="Opacity" To="0.5" Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="ReadOnly">
+                                    <Storyboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="Opacity" To="0.7" Duration="0" />
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IconReadyOnly" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                                <DiscreteObjectKeyFrame KeyTime="00:00:00.00" Value="{x:Static Visibility.Visible}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualState x:Name="IsNull" >
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="placeholder">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <CubicEase EasingMode="EaseInOut" />
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="placeholder">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <CubicEase EasingMode="EaseInOut" />
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="IsNotNull" >
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="placeholder">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-12">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <CubicEase EasingMode="EaseInOut" />
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="PART_ContentHost">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="7">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <CubicEase EasingMode="EaseInOut" />
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <!--<VisualState x:Name="Focused">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="bg"  Storyboard.TargetProperty="BorderBrush.(GradientBrush.GradientStops)[1].(GradientStop.Offset)">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <CubicEase EasingMode="EaseInOut" />
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="bg"  Storyboard.TargetProperty="BorderBrush.(GradientBrush.GradientStops)[2].(GradientStop.Offset)">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <CubicEase EasingMode="EaseInOut" />
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unfocused">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="bg" Storyboard.TargetProperty="BorderBrush.(GradientBrush.GradientStops)[0].(GradientStop.Color)" From="Yellow" To="White" Duration="0:0:1" />
+                                        <ColorAnimation Storyboard.TargetName="bg" Storyboard.TargetProperty="BorderBrush.(GradientBrush.GradientStops)[1].(GradientStop.Color)" From="Yellow" To="White" Duration="0:0:1" />
+                                        <ColorAnimation Storyboard.TargetName="bg" Storyboard.TargetProperty="BorderBrush.(GradientBrush.GradientStops)[2].(GradientStop.Color)" From="Yellow" To="White" Duration="0:0:1" />
+                                        <ColorAnimation Storyboard.TargetName="bg" Storyboard.TargetProperty="BorderBrush.(GradientBrush.GradientStops)[3].(GradientStop.Color)" From="Yellow" To="White" Duration="0:0:1" />
+                                    </Storyboard>
+                                </VisualState>-->
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="ValidationStates">
+                                <VisualState x:Name="ValidationFail">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="errorBorder" Storyboard.TargetProperty="Opacity">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:0.4" Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="textErrorContent" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:0" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:0.5" Value="50">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <CubicEase EasingMode="EaseInOut"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="textErrorContent" Storyboard.TargetProperty="Opacity">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:0" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:0.5" Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="errorBorder" Storyboard.TargetProperty="Opacity">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:0" Value="0.5"/>
+                                            <EasingDoubleKeyFrame KeyTime="00:00:0.5" Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="ValidationSuccess">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="errorBorder" Storyboard.TargetProperty="Opacity">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:0.4" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="textErrorContent" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:0.5" Value="0">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <CubicEase EasingMode="EaseInOut"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="textErrorContent" Storyboard.TargetProperty="Opacity">
+                                            <EasingDoubleKeyFrame KeyTime="00:00:0.5" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Grid TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="ClearType" >
+                            <!--<Border x:Name="bg" BorderThickness="{TemplateBinding BorderThickness}">
+                                <Border.BorderBrush>
+                                    <LinearGradientBrush>
+                                        <GradientStop Color="#00FFFFFF" Offset="0.0" />
+                                        <GradientStop Color="Yellow" Offset="0.5" />
+                                        <GradientStop Color="Yellow" Offset="0.5" />
+                                        <GradientStop Color="#00FFFFFF" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Border.BorderBrush>
+                            </Border>-->
+                            <DockPanel SnapsToDevicePixels="True" LastChildFill="True">
+                                <icons:PackIconFontAwesome Grid.Column="0" Visibility="{TemplateBinding RhiultaUI:TextBoxHelper.IconAwesome, Converter={RhiultaUI:NullEmptyZeroToCollapsed} }" Kind="{TemplateBinding RhiultaUI:TextBoxHelper.IconAwesome}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,2,5,0" Opacity="0.7" />
+                                <Border Margin="1" x:Name="IconReadyOnly" Background="Transparent" Visibility="Collapsed" Width="12" DockPanel.Dock="Right">
+                                    <icons:PackIconFontAwesome  Kind="EyeRegular"   VerticalAlignment="Center" Height="Auto"   Opacity="0.5" Width="Auto"/>
+                                </Border>
+                                <Border Margin="1" x:Name="IconTips" Background="Transparent" Visibility="Collapsed" Width="12" DockPanel.Dock="Right">
+                                    <icons:PackIconFontAwesome DockPanel.Dock="Right" x:Name="Icon" Kind="QuestionSolid"  Width="Auto" Height="Auto" Background="Transparent" VerticalAlignment="Center" Margin="2,0" Opacity="0.7" />
+                                </Border>
+                                <Grid DockPanel.Dock="Left" >
+                                    <Grid x:Name="ErrorMessage" Panel.ZIndex="99">
+                                        <Border BorderBrush="{DynamicResource redColorSB}" Opacity="0" Margin="-2"  BorderThickness="1" Background="#11FF0000" IsHitTestVisible="False" x:Name="errorBorder"/>
+                                        <Canvas x:Name="textErrorContent" Opacity="0" IsHitTestVisible="False">
+                                            <Canvas.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform />
+                                                    <SkewTransform  />
+                                                    <RotateTransform />
+                                                    <TranslateTransform />
+                                                </TransformGroup>
+                                            </Canvas.RenderTransform>
+                                            <Border Padding="5" Background="{DynamicResource redColorSB}">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <icons:PackIconModern Foreground="{DynamicResource primaryInvertColorSB}" VerticalAlignment="Center" Kind="Close" Margin="5,5,5,5"/>
+                                                    <TextBlock FontSize="13" Foreground="{DynamicResource primaryInvertColorSB}" TextBlock.FontFamily="Segoe UI" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(Validation.Errors)[0].ErrorContent}" Margin="3,0,0,0" TextWrapping="Wrap" MaxWidth="700" VerticalAlignment="Center" />
+                                                </StackPanel>
+                                            </Border>
+                                        </Canvas>
+                                    </Grid>
+                                    <ContentPresenter Grid.Row="0" Grid.RowSpan="2" Panel.ZIndex="10" SnapsToDevicePixels="True"  Typography.Capitals="AllSmallCaps" x:Name="placeholder" TextBlock.FontSize="14" TextBlock.Foreground="{TemplateBinding Foreground}" Opacity="0.5" Margin="5,0"  VerticalAlignment="Center"
+                                                      Content="{TemplateBinding RhiultaUI:TextBoxHelper.Placeholder}">
+                                        <ContentPresenter.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform />
+                                                <SkewTransform  />
+                                                <RotateTransform />
+                                                <TranslateTransform />
+                                            </TransformGroup>
+                                        </ContentPresenter.RenderTransform>
+                                    </ContentPresenter>
+                                    <ScrollViewer Grid.Row="1" x:Name="PART_ContentHost" VerticalAlignment="{TemplateBinding VerticalAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" >
+                                        <ScrollViewer.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform />
+                                                <SkewTransform  />
+                                                <RotateTransform />
+                                                <TranslateTransform />
+                                            </TransformGroup>
+                                        </ScrollViewer.RenderTransform>
+                                    </ScrollViewer>
+                                </Grid>
+                            </DockPanel>
+                            <Popup PlacementTarget="{Binding ElementName=IconTips}" Placement="Top" IsOpen="{Binding ElementName=IconTips, Path=IsMouseOver, Mode=OneWay}" AllowsTransparency="True">
+                                <Border Padding="10" Background="{DynamicResource primaryDarkColorSB}" BorderThickness="0.5" CornerRadius="2" BorderBrush="{DynamicResource primaryInvertColorSB}">
+                                    <ContentControl Content="{TemplateBinding RhiultaUI:TextBoxHelper.Tips}" />
+                                </Border>
+                            </Popup>
+                            <Popup PlacementTarget="{Binding ElementName=IconReadyOnly}"  Placement="Top" IsOpen="{Binding ElementName=IconReadyOnly, Path=IsMouseOver, Mode=OneWay}" AllowsTransparency="True">
+                                <ContentControl >
+                                    <Border Padding="10" Background="{DynamicResource primaryDarkColorSB}" BorderThickness="0.5" CornerRadius="2" BorderBrush="{DynamicResource primaryInvertColorSB}">
+                                        <TextBlock Foreground="{DynamicResource primaryInvertColorSB}" Text="Apenas leitura. Não é possível edita-lo." />
+                                    </Border>
+                                </ContentControl>
+                            </Popup>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource highlightColorSB}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsFocused" Value="True">
+                <!--<Setter Property="BorderBrush"  Value="{DynamicResource HighLightColor}" />-->
+                <!--<Setter Property="Background" Value="{DynamicResource ControlFocusedBackgroundBrush}"/>-->
+            </Trigger>
+
+            <Trigger Property="IsVisible" Value="true">
+                <!--<Setter Property="Validation.ErrorTemplate" Value="{StaticResource ValidationErroDefault}"/>-->
+            </Trigger>
+
+            <!--<Trigger Property="Text" Value="">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <BeginStoryboard.Storyboard>
+
+                        </BeginStoryboard.Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+            </Trigger>-->
+
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="TextboxTransparent" TargetType="{x:Type TextBox}">
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+        <Setter Property="RhiultaUI:ControlsHelper.IsMonitoring" Value="True" />
+        <Setter Property="RhiultaUI:TextBoxHelper.VisualState" Value="True" />
+        <Setter Property="RhiultaUI:ControlsHelper.SelectAllOnFocus" Value="True" />
+        <Setter Property="RhiultaUI:ControlsHelper.AdvancesByEnterKey" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="AllowDrop" Value="true" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0,0,0,0" />
+        <Setter Property="Padding" Value="2"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="CharacterCasing" Value="Upper"/>
+        <Setter Property="FontFamily" Value="{DynamicResource ROBOTOREGULAR}"/>
+        <Setter Property="Foreground" Value="{DynamicResource primaryInvertColorSB}" />
+        <Setter Property="Background" Value="#00000000" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border x:Name="Border" SnapsToDevicePixels="True" BorderBrush="{DynamicResource primaryColorSB}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" >
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
@@ -222,13 +482,13 @@
                                 </Grid>
                             </DockPanel>
                             <Popup PlacementTarget="{Binding ElementName=IconTips}" Placement="Top" IsOpen="{Binding ElementName=IconTips, Path=IsMouseOver, Mode=OneWay}" AllowsTransparency="True">
-                                <Border Padding="10" Background="{DynamicResource primaryDarkColorSB}" BorderThickness="0.5" CornerRadius="2" BorderBrush="{DynamicResource IdealForegroundColorSB}">
+                                <Border Padding="10" Background="{DynamicResource primaryDarkColorSB}" BorderThickness="0.5" CornerRadius="2" BorderBrush="{DynamicResource primaryInvertColorSB}">
                                     <ContentControl Content="{TemplateBinding RhiultaUI:TextBoxHelper.Tips}" />
                                 </Border>
                             </Popup>
                             <Popup PlacementTarget="{Binding ElementName=IconReadyOnly}"  Placement="Top" IsOpen="{Binding ElementName=IconReadyOnly, Path=IsMouseOver, Mode=OneWay}" AllowsTransparency="True">
                                 <ContentControl >
-                                    <Border Padding="10" Background="{DynamicResource primaryDarkColorSB}" BorderThickness="0.5" CornerRadius="2" BorderBrush="{DynamicResource IdealForegroundColorSB}">
+                                    <Border Padding="10" Background="{DynamicResource primaryDarkColorSB}" BorderThickness="0.5" CornerRadius="2" BorderBrush="{DynamicResource primaryInvertColorSB}">
                                         <TextBlock Foreground="{DynamicResource primaryInvertColorSB}" Text="Apenas leitura. Não é possível edita-lo." />
                                     </Border>
                                 </ContentControl>
@@ -266,5 +526,13 @@
         </Style.Triggers>
     </Style>
 
-    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource TexboxDefault}"/>
+
+    <Style x:Key="TextboxHighlight" TargetType="{x:Type TextBox}" BasedOn="{StaticResource TexboxDefault}">
+        <Setter Property="Foreground" Value="{DynamicResource primaryInvertColorSB}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource primaryInvertColorSB}" />
+    </Style>
+
+  <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource TexboxDefault}"/>
+
+
 </ResourceDictionary>
