@@ -5,7 +5,8 @@ RhiultaUI é simples framework que substitui o estilo padrão de todos os contro
 
 ### Note
 ----
-Este framework projeto foi desenvolvido para uso em soluções comerciais nas quais desenvolvi.
-Caso sobre algum tempo, tentarei atualizar alguns componentes. :)
+Desenvolvi este framework e utilizei em algumas das minhas soluções comerciais.
+Tem vários componentes para disponibilizar, ainda farei isso!
+Espero que ajude alguém!
 
 Have a good day!
