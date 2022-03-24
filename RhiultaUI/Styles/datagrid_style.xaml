@@ -183,9 +183,9 @@
                             <Setter TargetName="DGR_Border" Property="Background" Value="#111" />
                         </Trigger>-->
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource primaryDarkColorSB}" />
-                            <Setter Property="BorderBrush" Value="{DynamicResource primaryDarkColorSB}" />
-                            <Setter Property="Foreground" Value="{DynamicResource primaryInvertColorSB}" />
+                            <Setter Property="Background" Value="{DynamicResource primaryColorSB}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource primaryColorSB}" />
+                            <Setter Property="Foreground" Value="{DynamicResource PrimaryForegroundColorSB}" />
                             <Setter Property="BorderThickness" Value="0"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -215,11 +215,11 @@
 
     <Style x:Key="DataGridColumnHeaderBase" TargetType="DataGridColumnHeader">
         <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="Foreground" Value="{DynamicResource primaryInvertColorSB}" />
-        <Setter Property="Background" Value="{DynamicResource primaryDarkColorSB}"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryForegroundColorSB}" />
+        <Setter Property="Background" Value="{DynamicResource primaryColorSB}"/>
         <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="FontSize" Value="15"/>
-        <Setter Property="MinHeight" Value="50"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="MinHeight" Value="40"/>
 
         <Setter Property="Template">
             <Setter.Value>
@@ -230,7 +230,7 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Border x:Name="BackgroundBorder" Background="{TemplateBinding Background}" TextBlock.Foreground="{TemplateBinding Foreground}" BorderThickness="0,0,0.3,0" BorderBrush="{DynamicResource primaryInvertColorSB}" Grid.ColumnSpan="2" />
+                            <Border x:Name="BackgroundBorder" Background="{TemplateBinding Background}" TextBlock.Foreground="{TemplateBinding Foreground}" BorderThickness="0,0,0.5,0" BorderBrush="{DynamicResource primaryDarkColorSB}" Grid.ColumnSpan="2" />
                             <Border  x:Name="SortArrowContent"  Visibility="Collapsed" Margin="10,0,0,0"  VerticalAlignment="Center" >
                                 <icons:PackIconMaterialDesign x:Name="SortArrow" RenderTransformOrigin="0.5,0.5" Kind="ArrowUpward" Width="10" Height="10">
                                     <icons:PackIconMaterialDesign.RenderTransform>
@@ -296,8 +296,8 @@
         <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource primaryColorSB_10}"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Background" Value="{DynamicResource controlBackgroundColorSB}"/>
-        <Setter Property="Foreground" Value="{DynamicResource prymaryColorSB}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryForegroundColorSB}"/>
         <Setter Property="FontFamily" Value="{DynamicResource DROIDSANS}"/>
         <Setter Property="Template" Value="{DynamicResource DataGridTemplate}"/>
         <Setter Property="CellStyle" Value="{DynamicResource DataGridCellBase}"/>

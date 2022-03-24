@@ -4,133 +4,23 @@
                     xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
                     >
 
-    <Style x:Key="ButtonTransparent" TargetType="{x:Type Button}">
-        <Setter Property="SnapsToDevicePixels" Value="true" />
-        <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="RhiultaUI:ButtonHelper.IconAwesome" Value="{x:Null}" />
-        <Setter Property="RhiultaUI:ButtonHelper.IconPlacement" Value="Left" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Height" Value="Auto" />
-        <Setter Property="Width" Value="Auto"/>
-        <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="border" BorderThickness="{TemplateBinding BorderThickness}" RenderTransformOrigin="0.5,0.5" BorderBrush="{TemplateBinding BorderBrush}" Padding="{TemplateBinding Padding}" CornerRadius="0" TextBlock.Foreground="{TemplateBinding Foreground}" Background="{TemplateBinding Background}">
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="MouseOver">
-                                    <Storyboard>
-                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="borderBackground">
-                                            <EasingDoubleKeyFrame KeyTime="0" Value="0.999">
-                                                <EasingDoubleKeyFrame.EasingFunction>
-                                                    <CubicEase EasingMode="EaseInOut"/>
-                                                </EasingDoubleKeyFrame.EasingFunction>
-                                            </EasingDoubleKeyFrame>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.021">
-                                                <EasingDoubleKeyFrame.EasingFunction>
-                                                    <CubicEase EasingMode="EaseInOut"/>
-                                                </EasingDoubleKeyFrame.EasingFunction>
-                                            </EasingDoubleKeyFrame>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.999">
-                                                <EasingDoubleKeyFrame.EasingFunction>
-                                                    <CubicEase EasingMode="EaseInOut"/>
-                                                </EasingDoubleKeyFrame.EasingFunction>
-                                            </EasingDoubleKeyFrame>
-                                        </DoubleAnimationUsingKeyFrames>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="borderBackground">
-                                            <EasingColorKeyFrame KeyTime="0" Value="#33FDFDF7"/>
-                                            <EasingColorKeyFrame KeyTime="0:0:1" Value="#55FFFFE5"/>
-                                            <EasingColorKeyFrame KeyTime="0:0:8" Value="#33FFFFF6"/>
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState Name="Focused">
-                                    <Storyboard>
-                                        <DoubleAnimationUsingKeyFrames RepeatBehavior="Forever" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="borderBackground">
-                                            <EasingDoubleKeyFrame KeyTime="0" Value="0.999">
-                                                <EasingDoubleKeyFrame.EasingFunction>
-                                                    <CubicEase EasingMode="EaseInOut"/>
-                                                </EasingDoubleKeyFrame.EasingFunction>
-                                            </EasingDoubleKeyFrame>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.021">
-                                                <EasingDoubleKeyFrame.EasingFunction>
-                                                    <CubicEase EasingMode="EaseInOut"/>
-                                                </EasingDoubleKeyFrame.EasingFunction>
-                                            </EasingDoubleKeyFrame>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.999">
-                                                <EasingDoubleKeyFrame.EasingFunction>
-                                                    <CubicEase EasingMode="EaseInOut"/>
-                                                </EasingDoubleKeyFrame.EasingFunction>
-                                            </EasingDoubleKeyFrame>
-                                        </DoubleAnimationUsingKeyFrames>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="borderBackground">
-                                            <EasingColorKeyFrame KeyTime="0" Value="#33FFFF0A"/>
-                                            <EasingColorKeyFrame KeyTime="0:0:1" Value="#9cFFFF0A"/>
-                                            <EasingColorKeyFrame KeyTime="0:0:2" Value="#33FFFF0A"/>
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
-                        <Grid >
-                            <DockPanel Margin="10" LastChildFill="True" >
-                                <icons:PackIconFontAwesome x:Name="icon" VerticalAlignment="Center"   Foreground="{TemplateBinding Foreground}" Visibility="{TemplateBinding RhiultaUI:ButtonHelper.IconAwesome, Converter={RhiultaUI:NullEmptyZeroToCollapsed}}" Grid.Column="0" Kind="{TemplateBinding RhiultaUI:ButtonHelper.IconAwesome}" Width="30" Margin="0,0,7,0"  />
-                                <ContentPresenter x:Name="content" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </DockPanel>
-                            <Border  x:Name="borderBackground">
-                                <Border.Background>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <LinearGradientBrush.RelativeTransform>
-                                            <TransformGroup>
-                                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                                                <RotateTransform CenterY="0.5" CenterX="0.5" Angle="90"/>
-                                                <TranslateTransform/>
-                                            </TransformGroup>
-                                        </LinearGradientBrush.RelativeTransform>
-                                        <GradientStop Color="#00000000" Offset="0"/>
-                                        <GradientStop Color="#00FFFFFF" Offset="0.577"/>
-                                        <GradientStop Offset="1"/>
-                                    </LinearGradientBrush>
-                                </Border.Background>
-                            </Border>
-                        </Grid>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="border" Property="RenderTransform">
-                                <Setter.Value>
-                                    <ScaleTransform ScaleX="0.95" ScaleY="0.95" />
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                        <Trigger Property="RhiultaUI:ButtonHelper.IconPlacement" Value="Right">
-                            <Setter TargetName="icon" Property="DockPanel.Dock" Value="Right"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="#10CCCCCC"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+    
+    <Style x:Key="ButtonBase" TargetType="{x:Type Button}">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Height" Value="35"/>
     </Style>
 
-    <Style x:Key="ButtonSquare" TargetType="{x:Type Button}">
+    <Style x:Key="ButtonSquare" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonBase}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="RhiultaUI:ButtonHelper.IconAwesome" Value="{x:Null}" />
         <Setter Property="RhiultaUI:ButtonHelper.IconPlacement" Value="Left" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Height" Value="Auto" />
         <Setter Property="Width" Value="Auto"/>
         <Setter Property="BorderThickness" Value="0.7"/>
         <Setter Property="BorderBrush" Value="{DynamicResource primaryColorSB}" />
-        <Setter Property="Background" Value="{DynamicResource controlBackgroundColorSB}" />
-        <Setter Property="Foreground" Value="{DynamicResource primaryColorSB}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryForegroundColorSB}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -139,7 +29,7 @@
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="MouseOver">
-                                    <Storyboard>
+                                    <!--<Storyboard>
                                         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="borderBackground">
                                             <EasingDoubleKeyFrame KeyTime="0" Value="0.999">
                                                 <EasingDoubleKeyFrame.EasingFunction>
@@ -158,11 +48,11 @@
                                             </EasingDoubleKeyFrame>
                                         </DoubleAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="borderBackground">
-                                            <EasingColorKeyFrame KeyTime="0" Value="#33FDFDF7"/>
-                                            <EasingColorKeyFrame KeyTime="0:0:1" Value="#55FFFFE5"/>
-                                            <EasingColorKeyFrame KeyTime="0:0:8" Value="#33FFFFF6"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="#13FFFF0A"/>
+                                            <EasingColorKeyFrame KeyTime="0:0:1" Value="#5cFFFF0A"/>
+                                            <EasingColorKeyFrame KeyTime="0:0:8" Value="#13FFFF0A"/>
                                         </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
+                                    </Storyboard>-->
                                 </VisualState>
                                 <VisualState Name="Focused">
                                     <Storyboard>
@@ -184,19 +74,21 @@
                                             </EasingDoubleKeyFrame>
                                         </DoubleAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="borderBackground">
-                                            <EasingColorKeyFrame KeyTime="0" Value="#33FFFF0A"/>
-                                            <EasingColorKeyFrame KeyTime="0:0:1" Value="#9cFFFF0A"/>
-                                            <EasingColorKeyFrame KeyTime="0:0:2" Value="#33FFFF0A"/>
+                                            <EasingColorKeyFrame KeyTime="0" Value="#13FFFF0A"/>
+                                            <EasingColorKeyFrame KeyTime="0:0:1" Value="#5cFFFF0A"/>
+                                            <EasingColorKeyFrame KeyTime="0:0:2" Value="#13FFFF0A"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <Grid>
-                            <DockPanel LastChildFill="True" Margin="10">
-                                <icons:PackIconFontAwesome x:Name="icon" VerticalAlignment="Center"   Foreground="{TemplateBinding Foreground}" Visibility="{TemplateBinding RhiultaUI:ButtonHelper.IconAwesome, Converter={RhiultaUI:NullEmptyZeroToCollapsed}}" Grid.Column="0" Kind="{TemplateBinding RhiultaUI:ButtonHelper.IconAwesome}" Width="30" Margin="0,0,7,0"  />
-                                <ContentPresenter x:Name="content" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </DockPanel>
+                            <Border Padding="0">
+                                <DockPanel LastChildFill="True">
+                                    <icons:PackIconFontAwesome x:Name="icon" VerticalAlignment="Center"   Foreground="{TemplateBinding Foreground}" Visibility="{TemplateBinding RhiultaUI:ButtonHelper.IconAwesome, Converter={RhiultaUI:NullEmptyZeroToCollapsed}}" Grid.Column="0" Kind="{TemplateBinding RhiultaUI:ButtonHelper.IconAwesome}" Width="30" Margin="0,0,7,0"  />
+                                    <ContentPresenter x:Name="content" TextBlock.FontSize="{TemplateBinding FontSize}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </DockPanel>
+                            </Border>
                             <Border x:Name="borderBackground">
                                 <Border.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -235,6 +127,110 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+
+    <Style x:Key="ButtonTransparent" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonBase}">
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="RhiultaUI:ButtonHelper.IconAwesome" Value="{x:Null}" />
+        <Setter Property="RhiultaUI:ButtonHelper.IconPlacement" Value="Left" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Width" Value="Auto"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryForegroundColorSB}"/>
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" BorderThickness="{TemplateBinding BorderThickness}" RenderTransformOrigin="0.5,0.5" BorderBrush="{TemplateBinding BorderBrush}" Padding="{TemplateBinding Padding}" CornerRadius="0" TextBlock.Foreground="{TemplateBinding Foreground}" Background="{TemplateBinding Background}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="BorderThickness" Storyboard.TargetName="borderBackground">
+                                            <ThicknessAnimationUsingKeyFrames.KeyFrames>
+                                                <LinearThicknessKeyFrame KeyTime="0:0:0.1">
+                                                    <LinearThicknessKeyFrame.Value>
+                                                        <Thickness Left="1" Right="1" Top="1" Bottom="1" />
+                                                    </LinearThicknessKeyFrame.Value>
+                                                </LinearThicknessKeyFrame>
+                                            </ThicknessAnimationUsingKeyFrames.KeyFrames>
+                                        </ThicknessAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState Name="Focused">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames RepeatBehavior="Forever" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="borderBackground">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0.999">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <CubicEase EasingMode="EaseInOut"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.021">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <CubicEase EasingMode="EaseInOut"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.999">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <CubicEase EasingMode="EaseInOut"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="borderBackground">
+                                            <EasingColorKeyFrame KeyTime="0" Value="#33FFFF0A"/>
+                                            <EasingColorKeyFrame KeyTime="0:0:1" Value="#9cFFFF0A"/>
+                                            <EasingColorKeyFrame KeyTime="0:0:2" Value="#33FFFF0A"/>
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid >
+                            <DockPanel Margin="10" LastChildFill="True" >
+                                <icons:PackIconFontAwesome x:Name="icon" VerticalAlignment="Center"   Foreground="{TemplateBinding Foreground}" Visibility="{TemplateBinding RhiultaUI:ButtonHelper.IconAwesome, Converter={RhiultaUI:NullEmptyZeroToCollapsed}}" Grid.Column="0" Kind="{TemplateBinding RhiultaUI:ButtonHelper.IconAwesome}" Width="30" Margin="0,0,7,0"  />
+                                <ContentPresenter x:Name="content" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </DockPanel>
+                            <Border  x:Name="borderBackground" BorderBrush="{DynamicResource primaryColorSB}">
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <LinearGradientBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                <RotateTransform CenterY="0.5" CenterX="0.5" Angle="90"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </LinearGradientBrush.RelativeTransform>
+                                        <GradientStop Color="#00000000" Offset="0"/>
+                                        <GradientStop Color="#00FFFFFF" Offset="0.577"/>
+                                        <GradientStop Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="0.95" ScaleY="0.95" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="RhiultaUI:ButtonHelper.IconPlacement" Value="Right">
+                            <Setter TargetName="icon" Property="DockPanel.Dock" Value="Right"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="#10CCCCCC"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 
     <Style x:Key="ButtonSquareHighlight" TargetType="{x:Type Button}">
         <Setter Property="SnapsToDevicePixels" Value="true" />

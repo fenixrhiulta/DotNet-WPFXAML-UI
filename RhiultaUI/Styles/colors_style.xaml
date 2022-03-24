@@ -1,15 +1,24 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:System="clr-namespace:System;assembly=System.Runtime">
 
-    <Color x:Key="controlBackgroundColor">#EEE</Color>
-    <Color x:Key="controlForegroundColor">#222</Color>
+    <System:Double x:Key="FontSizeBase">15</System:Double>
+    <System:Double x:Key="MinHeightBase">45</System:Double>
 
-    <Color x:Key="primaryColor">#00796B</Color>
-    <Color x:Key="primaryDarkColor">#004D40</Color>
+
+
+    <Color x:Key="WindowBackgroundColor">#121212</Color>
+    <Color x:Key="PrimaryForegroundColor">#90E8E9F3</Color>
+
+
+    <Color x:Key="controlBackgroundColor">#121212</Color>
+    <Color x:Key="controlForegroundColor">#E8E9F3</Color>
+
+    <Color x:Key="primaryColor">#18cecece</Color>
+    <Color x:Key="primaryDarkColor">#50cecece</Color>
 
     <Color x:Key="primaryInvertColor">#EEE</Color>
 
-    <Color x:Key="highlightColor">#FDD835</Color>
+    <Color x:Key="highlightColor">#80FDD835</Color>
     <Color x:Key="highlightInvertColor">#FFFDE7</Color>
 
     <Color x:Key="redColor">#D32F2F</Color>
@@ -28,6 +37,11 @@
     <SolidColorBrush x:Key="controlBackgroundColorSB" Color="{DynamicResource controlBackgroundColor}" />
     <SolidColorBrush x:Key="controlForegroundColorSB" Color="{DynamicResource controlForegroundColor}" />
     <SolidColorBrush x:Key="highlightColorSB" Color="{DynamicResource highlightColor}" />
+
+
+    <SolidColorBrush x:Key="WindowBackgroundColorSB" Color="{DynamicResource WindowBackgroundColor}" />
+    <SolidColorBrush x:Key="PrimaryForegroundColorSB" Color="{DynamicResource PrimaryForegroundColor}" />
+
 
     <SolidColorBrush x:Key="redColorSB" Color="{DynamicResource redColor}" />
     <SolidColorBrush x:Key="greenColorSB" Color="{DynamicResource greenColor}" />

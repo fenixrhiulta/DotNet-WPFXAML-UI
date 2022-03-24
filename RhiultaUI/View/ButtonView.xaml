@@ -9,10 +9,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <StackPanel Margin="10" Width="300" HorizontalAlignment="Left">
+            <TextBlock Text="Buttons" FontSize="16" Margin="0,10" Foreground="{DynamicResource PrimaryForegroundColorSB}"/>
             <Button Margin="5" Content="BUTTON SQUARE" Style="{DynamicResource ButtonSquare}"/>
-            <Border Background="{DynamicResource primaryColorSB}">
-                <Button Margin="5" Content="BUTTON SQUARE" Style="{DynamicResource ButtonSquareHighlight}"/>
-            </Border>
             <Button Margin="5" Content="BUTTON FLAT" Style="{DynamicResource ButtonFlat}"/>
             <Button Margin="5" Content="BUTTON TRANSPARENT" Style="{DynamicResource ButtonTransparent}"/>
         </StackPanel>
