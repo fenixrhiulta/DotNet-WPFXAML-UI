@@ -58,7 +58,7 @@
                 <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.5"/>
             </DoubleAnimationUsingKeyFrames>
             <ColorAnimationUsingKeyFrames Storyboard.TargetName="bg" Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Color)">
-                <EasingColorKeyFrame KeyTime="00:00:00.3000000" Value="{StaticResource firstColorHighlight}"/>
+                <EasingColorKeyFrame KeyTime="00:00:00.3000000" Value="{StaticResource primaryColor}"/>
             </ColorAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="MouseLeave">
@@ -66,7 +66,7 @@
                 <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.3"/>
             </DoubleAnimationUsingKeyFrames>
             <ColorAnimationUsingKeyFrames Storyboard.TargetName="bg" Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Color)">
-                <EasingColorKeyFrame KeyTime="00:00:00.3000000" Value="{StaticResource firstColorDark}"/>
+                <EasingColorKeyFrame KeyTime="00:00:00.3000000" Value="{StaticResource primaryDarkColor}"/>
             </ColorAnimationUsingKeyFrames>
         </Storyboard>
     </UserControl.Resources>
