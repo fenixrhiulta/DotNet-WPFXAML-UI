@@ -67,13 +67,13 @@
 
     <Style x:Key="TabItemBase"  TargetType="TabItem">
         <Setter Property="Padding" Value="5"/>
-        <Setter Property="Background" Value="{DynamicResource primaryDarkColorSB}"/>
+        <Setter Property="Background" Value="{DynamicResource primaryColorSB}"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Height" Value="35"/>
         <Setter Property="FontSize" Value="12"/>
-        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Padding" Value="10"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Template">
             <Setter.Value>

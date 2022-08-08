@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:RhiultaUI="clr-namespace:RhiultaUI"
         xmlns:View="clr-namespace:RhiultaUI.View"
-        RhiultaUI:WindowHelper.FullScreen="True"
-        RhiultaUI:WindowHelper.WindowState="Maximized"
+        RhiultaUI:WindowHelper.FullScreen="False"
+        RhiultaUI:WindowHelper.WindowState="Normal"
+        RhiultaUI:WindowHelper.StartCenterScreen="True"
         xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
         RhiultaUI:WindowHelper.ContentHeader="{DynamicResource Header}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="900" Width="1440">
     <Window.Resources>
         <ContentControl x:Key="Header">
             <Button Style="{DynamicResource ButtonTransparent}" >
@@ -19,23 +20,27 @@
         </ContentControl>
     </Window.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Foreground="{DynamicResource PrimaryForegroundColorSB}" Margin="10" FontSize="30" Text="RhiultaUI Components Example"/>
 
-        <!--<Path Data="M791.5,2.79 L795.5,6.33" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="5" Margin="792,3,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="5"/>-->
-        <!--<Path Fill="Red" Data="M-3.5032458E-46,3.284293E-47 L4.15625,3.8525 8.3333333,0.20666671 4.71875,4.44625 8.5,9 4.3282601,4.8681589 0.27617674,8.9114923 3.71875,4.25875" Margin="8,7,784,418" />-->
-        <TabControl>
-            <TabItem Header="TextBox">
-                <StackPanel>
-                    <View:InputView/>
-                </StackPanel>
+        <View:InputView Margin="10" Panel.ZIndex="99" Grid.Row="1"/>
+        <View:ButtonView Margin="10"  Grid.Row="1" Grid.Column="1"/>
+        <View:DataGridView Margin="10"  Grid.Row="2" Grid.ColumnSpan="2"/>
+        <TabControl Margin="10"  Grid.Row="3" Grid.ColumnSpan="2">
+            <TabItem Header="Example 1">
+                <TextBlock Foreground="{DynamicResource PrimaryForegroundColorSB}" Margin="10" Text="Example 1"/>
             </TabItem>
-            <TabItem Header="Button">
-                <View:ButtonView/>
-            </TabItem>
-            <TabItem Header="DataGrid">
-                <View:DataGridView/>
-            </TabItem>
-            <TabItem Header="GroupBox">
-                <View:GroupBoxView/>
+            <TabItem Header="Example 2">
+                <TextBlock Foreground="{DynamicResource PrimaryForegroundColorSB}" Margin="10" Text="Example 2"/>
             </TabItem>
         </TabControl>
     </Grid>

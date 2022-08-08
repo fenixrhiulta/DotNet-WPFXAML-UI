@@ -13,15 +13,14 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <GroupBox Header="TextBox">
-            <StackPanel Margin="10" Width="300" HorizontalAlignment="Left">
-                <TextBox RhiultaUI:TextBoxHelper.Placeholder="Common Field"/>
-                <TextBox RhiultaUI:TextBoxHelper.Placeholder="With icon" RhiultaUI:TextBoxHelper.IconAwesome="AccusoftBrands" />
-                <TextBox RhiultaUI:TextBoxHelper.Placeholder="Custom icon"/>
-                <TextBox RhiultaUI:TextBoxHelper.Placeholder="Validate text" Text="{Binding model.input1, UpdateSourceTrigger=PropertyChanged}"/>
-            </StackPanel>
-        </GroupBox>
-        <GroupBox Grid.Row="1" Header="ComboBox">
+        <StackPanel Margin="10" Width="300" HorizontalAlignment="Left">
+            <TextBlock Text="TextBox" FontSize="16" Margin="0,10" Foreground="{DynamicResource PrimaryForegroundColorSB}"/>
+            <TextBox RhiultaUI:TextBoxHelper.Placeholder="Common Field"/>
+            <TextBox RhiultaUI:TextBoxHelper.Placeholder="With icon" RhiultaUI:TextBoxHelper.IconAwesome="AccusoftBrands" />
+            <TextBox RhiultaUI:TextBoxHelper.Placeholder="Validate text" Text="{Binding model.input1, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox RhiultaUI:TextBoxHelper.Placeholder="Custom icon"/>
+        </StackPanel>
+        <!--<GroupBox Grid.Row="1" Header="ComboBox">
             <StackPanel>
                 <ComboBox RhiultaUI:ComboBoxHelper.Placeholder="BALANÇA MODELO" />
             </StackPanel>
@@ -33,6 +32,6 @@
                     <CheckBox Content="Default" Style="{DynamicResource CheckBoxHighlight}"/>
                 </Border>
             </StackPanel>
-        </GroupBox>
+        </GroupBox>-->
     </Grid>
 </UserControl>
