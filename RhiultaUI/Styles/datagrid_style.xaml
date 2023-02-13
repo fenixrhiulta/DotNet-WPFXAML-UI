@@ -183,9 +183,9 @@
                             <Setter TargetName="DGR_Border" Property="Background" Value="#111" />
                         </Trigger>-->
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource primaryColorSB}" />
+                            <Setter Property="Background" Value="DarkRed" />
                             <Setter Property="BorderBrush" Value="{DynamicResource primaryColorSB}" />
-                            <Setter Property="Foreground" Value="{DynamicResource PrimaryForegroundColorSB}" />
+                            <Setter Property="Foreground" Value="White" />
                             <Setter Property="BorderThickness" Value="0"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -297,7 +297,7 @@
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{DynamicResource PrimaryForegroundColorSB}"/>
+        <Setter Property="Foreground" Value="#99ffffff"/>
         <Setter Property="FontFamily" Value="{DynamicResource DROIDSANS}"/>
         <Setter Property="Template" Value="{DynamicResource DataGridTemplate}"/>
         <Setter Property="CellStyle" Value="{DynamicResource DataGridCellBase}"/>

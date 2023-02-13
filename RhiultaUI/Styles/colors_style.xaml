@@ -13,7 +13,7 @@
     <Color x:Key="controlBackgroundColor">#121212</Color>
     <Color x:Key="controlForegroundColor">#E8E9F3</Color>
 
-    <Color x:Key="primaryColor">#18cecece</Color>
+    <Color x:Key="primaryColor">#cecece</Color>
     <Color x:Key="primaryDarkColor">#50cecece</Color>
 
     <Color x:Key="primaryInvertColor">#EEE</Color>
@@ -26,7 +26,7 @@
 
     <SolidColorBrush x:Key="primaryColorSB" Color="{DynamicResource primaryColor}" />
     <SolidColorBrush x:Key="primaryColorSB_80" Opacity="0.8" Color="{DynamicResource primaryColor}" />
-    <SolidColorBrush x:Key="primaryColorSB_10" Opacity="0.1" Color="{DynamicResource primaryColor}" />
+    <SolidColorBrush x:Key="primaryColorSB_10" Opacity="0.1" Color="#EEE" />
 
     <SolidColorBrush x:Key="primaryDarkColorSB" Color="{DynamicResource primaryDarkColor}" />
     <SolidColorBrush x:Key="primaryDarkColorSB_80" Opacity="0.8" Color="{DynamicResource primaryDarkColor}" />
